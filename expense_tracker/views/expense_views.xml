@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Expense Category Views -->
+    <record id="view_expense_category_form" model="ir.ui.view">
+        <field name="name">expense.category.form</field>
+        <field name="model">expense.category</field>
+        <field name="arch" type="xml">
+            <form string="Expense Category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_expense_category_tree" model="ir.ui.view">
+        <field name="name">expense.category.tree</field>
+        <field name="model">expense.category</field>
+        <field name="arch" type="xml">
+            <tree string="Expense Categories">
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Expense Tag Views -->
+    <record id="view_expense_tag_form" model="ir.ui.view">
+        <field name="name">expense.tag.form</field>
+        <field name="model">expense.tag</field>
+        <field name="arch" type="xml">
+            <form string="Expense Tag">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="color" widget="color_picker"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_expense_tag_tree" model="ir.ui.view">
+        <field name="name">expense.tag.tree</field>
+        <field name="model">expense.tag</field>
+        <field name="arch" type="xml">
+            <tree string="Expense Tags">
+                <field name="name"/>
+                <field name="color"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Personal Expense Views (Updated) -->
+    <record id="view_personal_expense_form" model="ir.ui.view">
+        <field name="name">personal.expense.form</field>
+        <field name="model">personal.expense</field>
+        <field name="arch" type="xml">
+            <form string="Personal Expense">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="date"/>
+                        <field name="amount"/>
+                        <field name="category_id"/>
+                        <field name="tag_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_personal_expense_tree" model="ir.ui.view">
+        <field name="name">personal.expense.tree</field>
+        <field name="model">personal.expense</field>
+        <field name="arch" type="xml">
+            <tree string="Personal Expenses">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="amount"/>
+                <field name="category_id"/>
+                <field name="tag_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_personal_expense" model="ir.actions.act_window">
+        <field name="name">Personal Expenses</field>
+        <field name="res_model">personal.expense</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_expense_category" model="ir.actions.act_window">
+        <field name="name">Categories</field>
+        <field name="res_model">expense.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_expense_tag" model="ir.actions.act_window">
+        <field name="name">Tags</field>
+        <field name="res_model">expense.tag</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_expense_tracker_frontend" model="ir.actions.act_url">
+        <field name="name">Expense Tracker</field>
+        <field name="url">/expense_tracker</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu Items (Updated) -->
+    <menuitem id="menu_personal_expense_root" name="Expense Tracker"
+        web_icon="ecommerce,static/description/icon.png"/>
+    <menuitem id="menu_personal_expense" name="Personal Expenses" parent="menu_personal_expense_root" action="action_personal_expense"/>
+
+    <menuitem id="menu_expense_categories_root" name="Expense Categories" parent="menu_personal_expense_root"/>
+    <menuitem id="menu_expense_categories" name="Categories" parent="menu_expense_categories_root" action="action_expense_category"/>
+
+    <menuitem id="menu_expense_tags_root" name="Expense Tags" parent="menu_personal_expense_root"/>
+    <menuitem id="menu_expense_tags" name="Tags" parent="menu_expense_tags_root" action="action_expense_tag"/>
+    <menuitem id="menu_expense_ui" parent="menu_personal_expense_root" name="Expense Tracker Frontend" action="action_expense_tracker_frontend" sequence="20"/>
+
+</odoo>

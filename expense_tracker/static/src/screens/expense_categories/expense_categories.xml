@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="expense_tracker.CategoriesList">
+        <div class="rounded-6 shadow p-4 o_content_modal_rounded_shades height-container overflow-auto">
+            <div class="mb-4 d-flex justify-content-between" t-if="!props.ignoreCreate">
+                <h2 class="text-white mt-2">
+                    Categories
+                </h2>
+                <div>
+                    <button type="button" class="btn btn-primary mx-1 me-2" t-on-click="_onClickAddCategory">
+                        <span class="fs-3">Create New Category</span>
+                    </button>
+                    <button t-if="state.selectedCategories.length" type="button" class="btn btn-primary" t-on-click="deleteCategory">
+                        <span class="fs-3">Delete Category</span>
+                    </button>
+                </div>
+            </div>
+            <hr />
+            <div class="d-flex border-3 mx-auto">
+                <table class="table table-dark table-hover mb-0">
+                    <thead>
+                        <tr class="table-success">
+                            <th></th>
+                            <th>Name</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="state.categories" t-as="category" t-key="category.id">
+                            <tr t-att-data-id="category.id" t-on-click="_onClickCategory" class="cursor-pointer">
+                                <td><t><input type="checkbox" class="form-check-input cursor-pointer" t-if="!props.ignoreCreate" t-att-data-id="category.id" t-on-click="_onCategorySelection"/></t></td>
+                                <td><t t-esc="category.name"/></td>
+                                <td><t t-esc="category.description"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </t>
+</templates>

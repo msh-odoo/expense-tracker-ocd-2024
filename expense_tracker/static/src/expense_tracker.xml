@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="expense_tracker.root">
+        <div class="d-flex expense_tracker_app">
+            <Header/>
+            <Container tname="mainScreen.name" component="mainScreen.component" mainScreenProps="mainScreenPropsFielded"/>
+            <!-- <DialogContainer dialogs="dialogs"/> -->
+        </div>
+    </t>
+</templates>

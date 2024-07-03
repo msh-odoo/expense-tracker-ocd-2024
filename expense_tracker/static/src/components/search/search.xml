@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="expense_tracker.search">
+        <div class="col-8 d-flex flex-col p-2 w-full justify-content-center">
+            <div class="search-container">
+                <input type="text" placeholder="Search for the expenses!!" class="o_input_search" t-ref="search_input"/>
+                <button type="button btn_search" t-on-click="onSearch">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </t>
+</templates>

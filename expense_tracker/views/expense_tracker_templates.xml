@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+          <template id="expense_tracker.root" name="Expense Tracker">
+            <html>
+                <head>
+                    <script id="web.layout.odooscript" type="text/javascript">
+                        var odoo = {
+                            csrf_token: "<t t-nocache="The csrf token must always be up to date." t-esc="request.csrf_token(None)"/>",
+                            debug: "<t t-esc="debug"/>",
+                        };
+                    </script>
+                    <t t-call-assets="expense_tracker.assets_expense"/>
+                </head>
+                <body class="o_expense_tracker">
+                </body>
+            </html>
+          </template>
+
+        <template id="unit_tests_suite">
+            <t t-call="web.layout">
+                <t t-set="html_data" t-value="{'style': 'height: 100%;'}"/>
+                <t t-set="title">Exepense Tracker Unit Tests</t>
+                <t t-set="head">
+                    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+                    <script type="text/javascript">
+                        odoo.__session_info__ = <t t-out="json.dumps(session_info)"/>;
+                    </script>
+
+                    <t t-call-assets="expense_tracker.assets_unit_tests_setup" />
+                    <t t-call-assets="expense_tracker.assets_unit_tests" />
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

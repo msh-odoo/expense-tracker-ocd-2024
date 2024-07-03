@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.expense_tracker_app {
+    background-color: #333;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.dashboard-app {
+    display: flex;
+    height: 100vh;
+}
+
+.header {
+    width: 200px;
+    padding: 30px;
+}
+
+.header h1 {
+    margin-bottom: 20px;
+}
+
+.header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.header nav ul li {
+    margin-bottom: 10px;
+}
+
+.header nav ul li {
+    a {
+        text-decoration: none;
+        color: $o-white;
+    }
+    &.active {
+        a {
+            color: aqua !important;
+        }
+        background-color: #504b4b;
+    }
+}
+
+.o_container {
+    background-color: $o-black;
+    color: $o-white;
+    width: 100%;
+
+    .expense-form {
+        .bounce {
+            position: relative;
+            -webkit-animation: bounce 0.3s infinite;
+          }
+          
+          @-webkit-keyframes bounce {
+            0%       { bottom: 5px; }
+            25%, 75% { bottom: 15px; }
+            50%      { bottom: 20px; }
+            100%     { bottom: 0; }
+          }
+    }
+}
+
+.o_content {
+    flex-grow: 1;
+    height: 100%;
+    .o_view_title {
+        color: white;
+    }
+    .content-area {
+        table {
+            color: white;
+        }
+    }
+}
+
+.form-control:focus {
+    color: $o-black !important;
+}
+
+.o_content_modal_rounded_shades {
+    background-color: #333;
+    border-radius: 0.5rem;
+}
+
+.height-container {
+    max-height: 78vh;
+    overflow-y: auto;
+}
+
+.expense-dashboard {
+    max-height: 50vh;
+}
+
+.nav-item {
+    margin-bottom: 5px;
+}
+
+.nav-link {
+    border-radius: 5px !important;
+
+    &:hover {
+        background-color: #624159;
+    }
+}
