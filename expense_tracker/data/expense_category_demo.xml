@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="categ_food" model="expense.category">
+            <field name="name">Food</field>
+            <field name="icon">fa-utensils</field>
+            <field name="description">Expenses done on Food.</field>
+        </record>
+        <record id="categ_entertaintment" model="expense.category">
+            <field name="name">Entertaintment</field>
+            <field name="icon">fa-camera-movie</field>
+            <field name="description">Expenses done on Entertaintment.</field>
+        </record>
+        <record id="categ_daily_needs" model="expense.category">
+            <field name="name">Daily Needs</field>
+            <field name="icon">fa-cart-shopping</field>
+            <field name="description">Expenses done on Daily needed things.</field>
+        </record>
+        <record id="categ_grooming" model="expense.category">
+            <field name="name">Grooming</field>
+            <field name="icon">fa-shirt</field>
+            <field name="description">Expenses done on Grooming.</field>
+        </record>
+        <record id="categ_tour" model="expense.category">
+            <field name="name">Tours and Travelling</field>
+            <field name="icon">fa-plane</field>
+            <field name="description">Expenses done on Tours.</field>
+        </record>
+    </data>
+</odoo>

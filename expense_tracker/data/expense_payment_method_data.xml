@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="payment_method_cash" model="payment.method">
+            <field name="name">Cash</field>
+            <field name="icon">fa-sack-dollar</field>
+            <field name="description">Payment method done through Cash.</field>
+        </record>
+        <record id="payment_method_upi" model="payment.method">
+            <field name="name">UPI</field>
+            <field name="icon">fa-google-pay</field>
+            <field name="description">Payment method done through UPI.</field>
+        </record>
+        <record id="payment_method_cc" model="payment.method">
+            <field name="name">Credit Card</field>
+            <field name="icon">fa-credit-card</field>
+            <field name="description">Payment method done through Credit Card.</field>
+        </record>
+        <record id="payment_method_dc" model="payment.method">
+            <field name="name">Debit Card</field>
+            <field name="icon">fa-credit-card</field>
+            <field name="description">Payment method done through Debit Card.</field>
+        </record>
+    </data>
+</odoo>

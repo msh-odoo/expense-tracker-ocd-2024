@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_personal_expense_user,access_personal_expense_user,model_personal_expense,,1,1,1,1
+access_expense_category_user,access_expense_category_user,model_expense_category,,1,1,1,1
+access_expense_tag_user,access_expense_tag_user,model_expense_tag,,1,1,1,1
