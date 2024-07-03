@@ -2,8 +2,22 @@
 <templates xml:space="preserve">
 
     <t t-name="expense_tracker.ExpenseTrackerDashboard">
-        <div class="row">
-            Hello World!
+        <div class="content">
+            <h2>Dashboard Content</h2>
+            <div class="content-area">
+                <t t-if="state.currentPage === 'home'">
+                    <p>Welcome to the home page!</p>
+                </t>
+                <t t-if="state.currentPage === 'expenses'">
+                    <p>Here you can manage your expenses.</p>
+                </t>
+                <t t-if="state.currentPage === 'categories'">
+                    <p>Manage your categories here.</p>
+                </t>
+                <t t-if="state.currentPage === 'tags'">
+                    <p>Manage your tags here.</p>
+                </t>
+            </div>
         </div>
     </t>
 </templates>

@@ -1,6 +1,6 @@
 import { Component, useState, onMounted, useRef, reactive, useExternalListener } from "@odoo/owl";
-// import { Header } from "./components/Header/header";
-// import { Container } from "./components/Container/container";
+import { Header } from "./components/header/header";
+import { Container } from "./components/container/container";
 // import { Footer } from "./components/Footer/footer";
 import { registry } from "@web/core/registry";
 
@@ -61,4 +61,4 @@ export class ExpenseTracker extends Component {
     }
 }
 
-// ExpenseTracker.components = { Header, Container, Footer } // DialogContainer
+ExpenseTracker.components = { Header, Container } // Footer, DialogContainer

@@ -13,7 +13,7 @@ export class ExpenseTrackerDashboard extends Component {
         this.state = useState({
             products: [],
         });
-        onWillStart(this.willStart);
+        // onWillStart(this.willStart);
         // this.fetchData = useFetchData();
     }
     // async willStart() {
