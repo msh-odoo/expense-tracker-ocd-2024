@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+}
+
+/* Style the app name */
+.app-name {
+    float: left;
+    color: white;
+    font-size: 20px;
+    padding: 14px 16px;
+}
+
+/* Style the search bar */
+.search-bar {
+    float: right;
+    padding: 10px;
+}
+
+/* Style the search input */
+.search-input {
+    width: 200px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Style the search button */
+.search-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.o_bid_success {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: url(img/right.gif);
+    background-repeat: no-repeat;
+}
