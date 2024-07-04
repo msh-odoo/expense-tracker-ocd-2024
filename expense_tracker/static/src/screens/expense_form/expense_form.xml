@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo>
+<templates xml:space="preserve">
     <t t-name="expense_tracker.ExpenseForm">
         <div class="expense-form">
             <h2>Add Expense</h2>
             <form t-on-submit.prevent="addExpense">
                 <div>
                     <label>Description:</label>
-                    <input type="text" t-model="state.newExpense.name" required/>
+                    <input type="text" t-model="state.newExpense.name" required="true"/>
                 </div>
                 <div>
                     <label>Date:</label>
-                    <input type="date" t-model="state.newExpense.date" required/>
+                    <input type="date" t-model="state.newExpense.date" required="true" />
                 </div>
                 <div>
                     <label>Amount:</label>
-                    <input type="number" t-model="state.newExpense.amount" required/>
+                    <input type="number" t-model="state.newExpense.amount" required="true" />
                 </div>
                 <div>
                     <label>Category:</label>
@@ -29,4 +29,4 @@
             </form>
         </div>
     </t>
-</odoo>
+</templates>

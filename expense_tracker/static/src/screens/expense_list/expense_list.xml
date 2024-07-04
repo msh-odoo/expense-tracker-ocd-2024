@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo>
+<templates xml:space="preserve">
     <t t-name="expense_tracker.PersonalExpenseList">
         <div>
             <h2>Personal Expenses</h2>
@@ -26,4 +26,4 @@
             <p>Total Amount: <t t-esc="totalAmount"/></p>
         </div>
     </t>
-</odoo>
+</templates>

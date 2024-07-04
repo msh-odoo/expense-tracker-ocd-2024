@@ -2,7 +2,7 @@
 <templates xml:space="preserve">
 
     <t t-name="expense_tracker.ExpenseTrackerDashboard">
-        <div class="content">
+        <div class="o_content">
             <h2>Dashboard Content</h2>
             <div class="content-area">
                 <t t-if="state.currentPage === 'home'">

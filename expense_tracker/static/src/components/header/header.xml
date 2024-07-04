@@ -3,8 +3,8 @@
 
     <t t-name="expense_tracker.header">
         <div class="header">
-            <h1>Dashboard Header</h1>
-            <nav>
+            <img class="rounded-circle" src="/web/image/res.partner/3/avatar_128"></img>
+            <nav class="mt-4">
                 <ul>
                     <li><a t-on-click.prevent="() => this.navigate('home')" href="#">Home</a></li>
                     <li><a t-on-click.prevent="() => this.navigate('expenses')" href="#">Expenses</a></li>
