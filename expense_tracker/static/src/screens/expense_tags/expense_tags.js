@@ -2,8 +2,8 @@ import { Component } from '@odoo/owl';
 import { registry } from "@web/core/registry";
 
 
-export class PersonalExpenseList extends Component {
-    static template = 'expense_tracker.PersonalExpenseList';
+export class TagsList extends Component {
+    static template = 'expense_tracker.TagsList';
 
     setup() {
         this.props.expenses = useState([]);
@@ -20,4 +20,4 @@ export class PersonalExpenseList extends Component {
     }
 }
 
-registry.category("screens").add("ExpenseList", PersonalExpenseList);
+registry.category("screens").add("TagsList", TagsList);

@@ -5,8 +5,19 @@ import { Component } from "@odoo/owl";
 export class Header extends Component {
     static template = "expense_tracker.header";
 
+    setup() {
+        this.state = { activeMenuItem: "home" };
+    }
+
     onClickLogo() {
-        window.location.href = "/show_owl";
+        window.location.href = "/expense_tracker";
+    }
+
+    onActivateMenu(ev) {
+        const menuName = ev.currentTarget.getAttribute('data-name');
+        this.state.activeMenuItem = menuName;
+        const screenName = ev.currentTarget.getAttribute('data-screen');
+        this.env.bus.trigger('change_screen', { 'screen_name': screenName });
     }
 }
 

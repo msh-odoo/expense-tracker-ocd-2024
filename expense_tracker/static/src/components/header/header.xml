@@ -6,10 +6,18 @@
             <img class="rounded-circle" src="/web/image/res.partner/3/avatar_128"></img>
             <nav class="mt-4">
                 <ul>
-                    <li><a t-on-click.prevent="() => this.navigate('home')" href="#">Home</a></li>
-                    <li><a t-on-click.prevent="() => this.navigate('expenses')" href="#">Expenses</a></li>
-                    <li><a t-on-click.prevent="() => this.navigate('categories')" href="#">Categories</a></li>
-                    <li><a t-on-click.prevent="() => this.navigate('tags')" href="#">Tags</a></li>
+                    <li t-attf-class="{{ 'active' ? state.activeMenuItem === 'home' : '' }}">
+                        <a t-on-click.prevent="onActivateMenu" data-screen="Dashboard" data-name="home" href="#">Home</a>
+                    </li>
+                    <li t-attf-class="{{ 'active' ? state.activeMenuItem === 'expenses' : '' }}">
+                        <a t-on-click.prevent="onActivateMenu" data-screen="ExpenseList" data-name="expenses" href="#">Expenses</a>
+                    </li>
+                    <li t-attf-class="{{ 'active' ? state.activeMenuItem === 'categories' : '' }}">
+                        <a t-on-click.prevent="onActivateMenu" data-screen="CategoriesList" data-name="categories" href="#">Categories</a>
+                    </li>
+                    <li t-attf-class="{{ 'active' ? state.activeMenuItem === 'tags' : '' }}">
+                        <a t-on-click.prevent="onActivateMenu" data-screen="TagsList" data-name="tags" href="#">Tags</a>
+                    </li>
                 </ul>
             </nav>
         </div>

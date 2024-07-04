@@ -4,7 +4,7 @@ import { Container } from "./components/container/container";
 // import { Footer } from "./components/Footer/footer";
 import { registry } from "@web/core/registry";
 
-import { ExpenseTrackerDashboard } from "./screens/expense_dashboard/expense_dashboard";
+import { Dashboard } from "./screens/expense_dashboard/expense_dashboard";
 // import { DialogContainer } from "./components/dialog/dialog_container";
 
 export class ExpenseTracker extends Component {
@@ -12,7 +12,7 @@ export class ExpenseTracker extends Component {
 
     setup() {
         super.setup();
-        this.mainScreen = useState({ name: 'ExpenseTrackerDashboard', component: ExpenseTrackerDashboard });
+        this.mainScreen = useState({ name: 'Dashboard', component: Dashboard });
         this.env.bus.addEventListener("change_screen", this.onChangeScreen.bind(this));
         // this.env.bus.addEventListener("add_dialog", this.onAddDialog.bind(this));
         this.mainScreenProps = {};

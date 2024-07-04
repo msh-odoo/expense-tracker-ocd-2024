@@ -1,12 +1,9 @@
 
 import { Component, useState, onWillStart } from "@odoo/owl";
-// import { ProductList } from "./ProductList";
-// import { Sidebar } from "./Sidebar";
 import { registry } from "@web/core/registry";
-// import { useFetchData } from "../../core/db"
 
-export class ExpenseTrackerDashboard extends Component {
-    static template = "expense_tracker.ExpenseTrackerDashboard";
+export class Dashboard extends Component {
+    static template = "expense_tracker.Dashboard";
 
     setup() {
         super.setup();
@@ -26,4 +23,4 @@ export class ExpenseTrackerDashboard extends Component {
 
 // ProductScreen.components = { ProductList, Sidebar }
 
-registry.category("screens").add("ExpenseTrackerDashboard", ExpenseTrackerDashboard);
+registry.category("screens").add("Dashboard", Dashboard);

@@ -2,8 +2,8 @@ import { Component, useState } from '@odoo/owl';
 import { registry } from "@web/core/registry";
 
 
-class ExpenseForm extends Component {
-    static template = "expense_tracker.ExpenseForm";
+class ExpenseCategoriesList extends Component {
+    static template = "expense_tracker.CategoriesList";
     setup() {
         this.state = useState({
             newExpense: {
@@ -15,7 +15,7 @@ class ExpenseForm extends Component {
         });
     }
 
-    addExpense() {
+    addCategory() {
         this.trigger('expense-added', { ...this.state.newExpense });
         this.state.newExpense = {
             name: '',
@@ -26,4 +26,4 @@ class ExpenseForm extends Component {
     }
 }
 
-registry.category("screens").add("ExpenseForm", ExpenseForm);
+registry.category("screens").add("CategoriesList", ExpenseCategoriesList);
