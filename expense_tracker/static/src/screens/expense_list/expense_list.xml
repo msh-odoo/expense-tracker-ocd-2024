@@ -13,7 +13,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <t t-foreach="state.expenses" t-as="expense">
+                    <t t-foreach="state.expenses" t-as="expense" t-key="expense.id">
                         <tr>
                             <td><t t-esc="expense.name"/></td>
                             <td><t t-esc="expense.date"/></td>

@@ -13,12 +13,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <t t-foreach="state.expenses" t-as="expense">
+                    <t t-foreach="state.categories" t-as="category" t-key="category.id">
                         <tr>
-                            <td><t t-esc="expense.name"/></td>
-                            <td><t t-esc="expense.date"/></td>
-                            <td><t t-esc="expense.amount"/></td>
-                            <td><t t-esc="expense.category"/></td>
+                            <td><t t-esc="category.name"/></td>
+                            <td><t t-esc="category.date"/></td>
+                            <td><t t-esc="category.amount"/></td>
+                            <td><t t-esc="category.category"/></td>
                         </tr>
                     </t>
                 </tbody>

@@ -6,12 +6,13 @@ class ExpenseCategoriesList extends Component {
     static template = "expense_tracker.CategoriesList";
     setup() {
         this.state = useState({
-            newExpense: {
+            categories: [{
+                id: 1,
                 name: '',
                 date: '',
                 amount: 0,
                 category: 'food'
-            }
+            }]
         });
     }
 

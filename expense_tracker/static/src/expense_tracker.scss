@@ -34,9 +34,17 @@
     margin-bottom: 10px;
 }
 
-.header nav ul li a {
-    text-decoration: none;
-    color: $o-white;
+.header nav ul li {
+    a {
+        text-decoration: none;
+        color: $o-white;
+    }
+    &.active {
+        a {
+            color: aqua !important;
+        }
+        background-color: #504b4b;
+    }
 }
 
 .o_container {

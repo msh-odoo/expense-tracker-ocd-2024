@@ -6,16 +6,16 @@
             <img class="rounded-circle" src="/web/image/res.partner/3/avatar_128"></img>
             <nav class="mt-4">
                 <ul>
-                    <li t-attf-class="{{ 'active' ? state.activeMenuItem === 'home' : '' }}">
+                    <li t-attf-class="{{ state.activeMenuItem === 'home' ? 'active' : '' }}">
                         <a t-on-click.prevent="onActivateMenu" data-screen="Dashboard" data-name="home" href="#">Home</a>
                     </li>
-                    <li t-attf-class="{{ 'active' ? state.activeMenuItem === 'expenses' : '' }}">
+                    <li t-attf-class="{{ state.activeMenuItem === 'expenses' ? 'active' : '' }}">
                         <a t-on-click.prevent="onActivateMenu" data-screen="ExpenseList" data-name="expenses" href="#">Expenses</a>
                     </li>
-                    <li t-attf-class="{{ 'active' ? state.activeMenuItem === 'categories' : '' }}">
+                    <li t-attf-class="{{ state.activeMenuItem === 'categories' ? 'active' : '' }}">
                         <a t-on-click.prevent="onActivateMenu" data-screen="CategoriesList" data-name="categories" href="#">Categories</a>
                     </li>
-                    <li t-attf-class="{{ 'active' ? state.activeMenuItem === 'tags' : '' }}">
+                    <li t-attf-class="{{ state.activeMenuItem === 'tags' ? 'active' : '' }}">
                         <a t-on-click.prevent="onActivateMenu" data-screen="TagsList" data-name="tags" href="#">Tags</a>
                     </li>
                 </ul>

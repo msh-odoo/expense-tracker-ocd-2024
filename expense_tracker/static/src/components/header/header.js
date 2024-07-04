@@ -1,12 +1,12 @@
 
-import { Component } from "@odoo/owl";
+import { Component, useState } from "@odoo/owl";
 // import { Search } from "./search";
 
 export class Header extends Component {
     static template = "expense_tracker.header";
 
     setup() {
-        this.state = { activeMenuItem: "home" };
+        this.state = useState({ activeMenuItem: "home" });
     }
 
     onClickLogo() {
