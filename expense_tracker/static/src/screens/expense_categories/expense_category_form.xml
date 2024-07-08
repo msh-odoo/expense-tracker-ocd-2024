@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="expense_tracker.ExpenseCategoryForm">
+        <div class="expense-form">
+            <h2>Add Category</h2>
+            <div class="d-flex">
+                <form class="w-100" t-on-submit.prevent="_onAddCategory">
+                    <div class="form-group">
+                        <label>Icon:</label>
+                        <div></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input class="form-control" type="text" t-model="state.newCategory.name" required="true" />
+                    </div>
+                    <button class="btn btn-primary" type="submit">Add Category</button>
+                </form>
+            </div>
+        </div>
+    </t>
+</templates>

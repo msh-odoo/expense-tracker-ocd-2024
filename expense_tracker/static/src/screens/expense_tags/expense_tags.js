@@ -8,16 +8,13 @@ export class TagsList extends Component {
     setup() {
         this.props.expenses = useState([]);
         this.state = useState({
-            expenses: [
-                { id: 1, name: 'Lunch', date: '2024-07-01', amount: 15.00, category: 'food' },
-                { id: 2, name: 'Taxi', date: '2024-07-02', amount: 30.00, category: 'transport' },
+            tags: [
+                { id: 1, name: 'Lunch', color: 1 },
+                { id: 2, name: 'Taxi', color: 2 },
             ],
         });
     }
 
-    get totalAmount() {
-        return this.state.expenses.reduce((sum, expense) => sum + expense.amount, 0);
-    }
 }
 
 registry.category("screens").add("TagsList", TagsList);

@@ -10,8 +10,9 @@ class ExpenseForm extends Component {
                 name: '',
                 date: '',
                 amount: 0,
-                category: 'food'
-            }
+                category: 1,
+            },
+            categories: [[1, 'Food'], [2, 'Entertaintment']] // TODO: MSH: Need to fetch from server and maybe use model structure
         });
     }
 

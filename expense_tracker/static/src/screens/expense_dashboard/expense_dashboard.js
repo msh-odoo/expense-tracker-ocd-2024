@@ -1,6 +1,7 @@
 
 import { Component, useState, onWillStart } from "@odoo/owl";
 import { registry } from "@web/core/registry";
+import { PersonalExpenseList } from "../expense_list/expense_list";
 
 export class Dashboard extends Component {
     static template = "expense_tracker.Dashboard";
@@ -8,7 +9,10 @@ export class Dashboard extends Component {
     setup() {
         super.setup();
         this.state = useState({
-            products: [],
+            expenses: [
+                { id: 1, name: 'Lunch', date: '2024-07-01', amount: 15.00, category: 'food' },
+                { id: 2, name: 'Taxi', date: '2024-07-02', amount: 30.00, category: 'transport' },
+            ],
         });
         // onWillStart(this.willStart);
         // this.fetchData = useFetchData();
@@ -21,6 +25,6 @@ export class Dashboard extends Component {
 
 }
 
-// ProductScreen.components = { ProductList, Sidebar }
+Dashboard.components = { PersonalExpenseList }
 
 registry.category("screens").add("Dashboard", Dashboard);

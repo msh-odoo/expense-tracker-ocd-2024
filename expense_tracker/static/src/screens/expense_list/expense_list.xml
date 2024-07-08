@@ -3,27 +3,35 @@
     <t t-name="expense_tracker.PersonalExpenseList">
         <div>
             <h2>Personal Expenses</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Description</th>
-                        <th>Date</th>
-                        <th>Amount</th>
-                        <th>Category</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <t t-foreach="state.expenses" t-as="expense" t-key="expense.id">
+            <div class="d-flex">
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td><t t-esc="expense.name"/></td>
-                            <td><t t-esc="expense.date"/></td>
-                            <td><t t-esc="expense.amount"/></td>
-                            <td><t t-esc="expense.category"/></td>
+                            <th>Description</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Category</th>
                         </tr>
-                    </t>
-                </tbody>
-            </table>
-            <p>Total Amount: <t t-esc="totalAmount"/></p>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="state.expenses" t-as="expense" t-key="expense.id">
+                            <tr t-on-click="_onClickExpenseRow">
+                                <td><t t-esc="expense.name"/></td>
+                                <td><t t-esc="expense.date"/></td>
+                                <td><t t-esc="expense.amount"/></td>
+                                <td><t t-esc="expense.category"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                    <tfoot>
+                        <td colspan="2"></td>
+                        <td>
+                            <p>Total Amount: <t t-esc="totalAmount"/></p>
+                        </td>
+                        <td></td>
+                    </tfoot>
+                </table>
+            </div>
         </div>
     </t>
 </templates>

@@ -6,17 +6,28 @@ export class PersonalExpenseList extends Component {
     static template = 'expense_tracker.PersonalExpenseList';
 
     setup() {
-        this.props.expenses = useState([]);
+        // this.props.expenses = useState([]);
         this.state = useState({
-            expenses: [
-                { id: 1, name: 'Lunch', date: '2024-07-01', amount: 15.00, category: 'food' },
-                { id: 2, name: 'Taxi', date: '2024-07-02', amount: 30.00, category: 'transport' },
-            ],
+            expenses: [],
         });
+        if (this.props.expenses) {
+            this.state.expenses = this.props.expenses;
+        } else {
+            this.state = useState({
+                expenses: [
+                    { id: 1, name: 'Lunch', date: '2024-07-01', amount: 15.00, category: 'food' },
+                    { id: 2, name: 'Taxi', date: '2024-07-02', amount: 30.00, category: 'transport' },
+                ],
+            });
+        }
     }
 
     get totalAmount() {
         return this.state.expenses.reduce((sum, expense) => sum + expense.amount, 0);
+    }
+
+    _onClickExpenseRow(ev) {
+        this.env.bus.trigger('change_screen', { 'screen_name': 'ExpenseForm' });
     }
 }
 

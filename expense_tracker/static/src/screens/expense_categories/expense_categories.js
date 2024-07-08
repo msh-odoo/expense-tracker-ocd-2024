@@ -8,22 +8,14 @@ class ExpenseCategoriesList extends Component {
         this.state = useState({
             categories: [{
                 id: 1,
-                name: '',
-                date: '',
-                amount: 0,
-                category: 'food'
+                icon: '',
+                name: 'Food',
             }]
         });
     }
 
-    addCategory() {
-        this.trigger('expense-added', { ...this.state.newExpense });
-        this.state.newExpense = {
-            name: '',
-            date: '',
-            amount: 0,
-            category: 'food'
-        };
+    _onClickAddCategory() {
+        this.env.bus.trigger('change_screen', { 'screen_name': 'ExpenseCategoryForm' });
     }
 }
 
