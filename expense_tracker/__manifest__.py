@@ -15,6 +15,7 @@
             'expense_tracker/static/src/backend/**/*',
         ],
         'expense_tracker.assets_expense': [
+            ('include', 'web._assets_core'),
             ('include', 'web._assets_helpers'),
             ('include', 'web._assets_frontend_helpers'),
 

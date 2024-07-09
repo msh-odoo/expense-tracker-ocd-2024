@@ -2,12 +2,15 @@
 import { Component, useState, onWillStart } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { PersonalExpenseList } from "../expense_list/expense_list";
+import { useModel } from "../../model/model";
+import { ExpenseTrackerModel } from "../../model/expense_tracker_model";
 
 export class Dashboard extends Component {
     static template = "expense_tracker.Dashboard";
 
     setup() {
         super.setup();
+        this.model = useState(useModel(ExpenseTrackerModel, this.modelParams));
         this.state = useState({
             expenses: [
                 { id: 1, name: 'Lunch', date: '2024-07-01', amount: 15.00, category: 'food' },
@@ -16,6 +19,14 @@ export class Dashboard extends Component {
         });
         // onWillStart(this.willStart);
         // this.fetchData = useFetchData();
+    }
+
+    get modelParams() {
+        return {};
+    }
+
+    load() {
+        debugger;
     }
     // async willStart() {
     //     this.datas = await this.fetchData();

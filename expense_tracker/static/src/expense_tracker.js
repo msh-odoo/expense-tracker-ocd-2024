@@ -1,8 +1,9 @@
-import { Component, useState, onMounted, useRef, reactive, useExternalListener } from "@odoo/owl";
+import { Component, useState, useSubEnv, onMounted, useRef, reactive, useExternalListener } from "@odoo/owl";
 import { Header } from "./components/header/header";
 import { Container } from "./components/container/container";
 // import { Footer } from "./components/Footer/footer";
 import { registry } from "@web/core/registry";
+import { ORM } from "@web/core/orm_service";
 
 import { Dashboard } from "./screens/expense_dashboard/expense_dashboard";
 // import { DialogContainer } from "./components/dialog/dialog_container";
@@ -12,6 +13,9 @@ export class ExpenseTracker extends Component {
 
     setup() {
         super.setup();
+        const orm = new ORM();
+        // Use of useSubEnv to pass orm to this component as well as all it's children
+        useSubEnv({ orm });
         this.mainScreen = useState({ name: 'Dashboard', component: Dashboard });
         this.env.bus.addEventListener("change_screen", this.onChangeScreen.bind(this));
         // this.env.bus.addEventListener("add_dialog", this.onAddDialog.bind(this));

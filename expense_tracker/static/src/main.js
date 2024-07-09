@@ -6,6 +6,7 @@ import { App, EventBus } from "@odoo/owl";
 import { getTemplate } from "@web/core/templates";
 import { ExpenseTracker } from "./expense_tracker";
 
+
 // The following code ensures that owl mount the component when ready.
 // `templates` contains templates contained in the bundles.
 //
@@ -16,6 +17,7 @@ owl.whenReady(async () => {
     const bus = new EventBus();
     const db = new DB();
     const env = { bus, db, rpc };
+    // await startServices(env);
     const app = new App(ExpenseTracker, {
         env,
         getTemplate,
