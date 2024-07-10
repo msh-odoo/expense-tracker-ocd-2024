@@ -1,10 +1,10 @@
 import { Component, useState, useSubEnv, onMounted, useRef, reactive, useExternalListener } from "@odoo/owl";
 import { Header } from "./components/header/header";
 import { Container } from "./components/container/container";
-// import { Footer } from "./components/Footer/footer";
 import { registry } from "@web/core/registry";
 import { ORM } from "@web/core/orm_service";
-
+import { useModel } from "./model/model";
+import { ExpenseTrackerModel } from "./model/expense_tracker_model";
 import { Dashboard } from "./screens/expense_dashboard/expense_dashboard";
 // import { DialogContainer } from "./components/dialog/dialog_container";
 
@@ -14,15 +14,17 @@ export class ExpenseTracker extends Component {
     setup() {
         super.setup();
         const orm = new ORM();
+        // this.model = useModel(ExpenseTrackerModel, this.modelParams);
         // Use of useSubEnv to pass orm to this component as well as all it's children
         useSubEnv({ orm });
+        debugger;
         this.mainScreen = useState({ name: 'Dashboard', component: Dashboard });
         this.env.bus.addEventListener("change_screen", this.onChangeScreen.bind(this));
         // this.env.bus.addEventListener("add_dialog", this.onAddDialog.bind(this));
         this.mainScreenProps = {};
 
-        this.dialogs = reactive({});
-        this.dialogId = 0;
+        // this.dialogs = reactive({});
+        // this.dialogId = 0;
     }
 
     /**
@@ -31,6 +33,10 @@ export class ExpenseTracker extends Component {
     get mainScreenPropsFielded() {
         return Object.assign({}, this.mainScreenProps);
     }
+
+    // get modelParams() {
+    //     return {};
+    // }
 
     onAddDialog(ev) {
         const id = this.dialogId++

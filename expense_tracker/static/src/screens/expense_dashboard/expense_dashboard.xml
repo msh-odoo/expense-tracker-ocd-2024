@@ -5,7 +5,7 @@
         <div class="o_content">
             <h2>Dashboard Content</h2>
             <div class="content-area">
-                <PersonalExpenseList expenses="state.expenses"/>
+                <PersonalExpenseList expenses="model.expenses"/>
                 <div>
                     <h4>Quick Access</h4>
                     <div class="row">

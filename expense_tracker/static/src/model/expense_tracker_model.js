@@ -8,13 +8,19 @@ export class ExpenseTrackerModel extends Model {
      */
     setup(params) {
         super.setup(params);
+        this.expenses = [];
     }
 
     /**
      * @param {SearchParams} searchParams
      */
-    load(searchParams) {
-        debugger;
+    async load(searchParams) {
+        const res = await this.orm.searchRead("personal.expense",
+            [["active", "=", true]],
+            ["name", "user_id", "date", "amount", "category_id", "icon", "payment_method_id", "tag_ids"],
+            { limit: 20 },
+        );
+        this.expenses = res;
     }
 
     /**
@@ -27,5 +33,5 @@ export class ExpenseTrackerModel extends Model {
     //--------------------------------------------------------------------------
     // Protected
     //--------------------------------------------------------------------------
-    
+
 }

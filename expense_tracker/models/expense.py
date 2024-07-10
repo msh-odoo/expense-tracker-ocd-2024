@@ -5,6 +5,7 @@ class PersonalExpense(models.Model):
     _description = 'Personal Expense Tracker'
 
     name = fields.Char(string='Description', required=True)
+    active = fields.Boolean(default=True)
     user_id = fields.Many2one("res.users", default=lambda self: self.env.user, required=True)
     date = fields.Date(string='Date', required=True, default=fields.Date.today)
     amount = fields.Float(string='Amount', required=True)

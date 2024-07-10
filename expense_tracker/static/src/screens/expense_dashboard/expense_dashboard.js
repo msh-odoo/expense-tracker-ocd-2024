@@ -1,5 +1,5 @@
 
-import { Component, useState, onWillStart } from "@odoo/owl";
+import { Component, onWillStart, onWillUpdateProps, useState, useComponent } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { PersonalExpenseList } from "../expense_list/expense_list";
 import { useModel } from "../../model/model";
@@ -10,24 +10,21 @@ export class Dashboard extends Component {
 
     setup() {
         super.setup();
-        this.model = useState(useModel(ExpenseTrackerModel, this.modelParams));
-        this.state = useState({
-            expenses: [
-                { id: 1, name: 'Lunch', date: '2024-07-01', amount: 15.00, category: 'food' },
-                { id: 2, name: 'Taxi', date: '2024-07-02', amount: 30.00, category: 'transport' },
-            ],
+        // this.model = useState(useModel(ExpenseTrackerModel, this.modelParams));
+        const component = useComponent();
+        this.model = useModel(ExpenseTrackerModel, this.modelParams);
+        this.state = useState({ expenses: [] });
+        onWillStart(async () => {
+            const res = this.model.load(component.props);
+            this.state.expenses = res;
         });
-        // onWillStart(this.willStart);
-        // this.fetchData = useFetchData();
+        onWillUpdateProps((nextProps) => this.state.expenses = this.model.load(nextProps));
     }
 
-    get modelParams() {
-        return {};
-    }
+    // get modelParams() {
+    //     return {};
+    // }
 
-    load() {
-        debugger;
-    }
     // async willStart() {
     //     this.datas = await this.fetchData();
     //     this.state.products = this.datas.products;

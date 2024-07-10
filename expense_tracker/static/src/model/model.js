@@ -4,7 +4,7 @@
 // import { useSetupView } from "@web/views/view_hook";
 // import { buildSampleORM } from "./sample_server";
 
-import { EventBus, onWillStart, onWillUpdateProps, useComponent } from "@odoo/owl";
+import { EventBus, useComponent } from "@odoo/owl";
 
 /**
  * @typedef {import("@web/search/search_model").SearchParams} SearchParams
@@ -70,119 +70,8 @@ export class Model {
  * @param {Function} [options.beforeFirstLoad]
  * @returns {InstanceType<T>}
  */
-export function useModel(ModelClass, params, options = {}) {
+export function useModel(ModelClass, params = {}, options = {}) {
     const component = useComponent();
-    // const services = {};
-    // for (const key of ModelClass.services) {
-    //     services[key] = useService(key);
-    // }
-    // services.orm = services.orm || useService("orm");
-    const model = new ModelClass(component.env, params, { orm: component.orm });
-    onWillStart(async () => {
-        await options.beforeFirstLoad?.();
-        return model.load(component.props);
-    });
-    onWillUpdateProps((nextProps) => model.load(nextProps));
+    const model = new ModelClass(component.env, params, { orm: component.env.orm });
     return model;
 }
-
-// /**
-//  * @param {Object} props
-//  * @returns {SearchParams}
-//  */
-// function getSearchParams(props) {
-//     const params = {};
-//     for (const key of SEARCH_KEYS) {
-//         params[key] = props[key];
-//     }
-//     return params;
-// }
-
-// /**
-//  * @template {typeof Model} T
-//  * @param {T} ModelClass
-//  * @param {Object} params
-//  * @param {Object} [options]
-//  * @param {Function} [options.onUpdate]
-//  * @param {Function} [options.onWillStart]
-//  * @param {Function} [options.onWillStartAfterLoad]
-//  * @returns {InstanceType<T>}
-//  */
-// export function useModelWithSampleData(ModelClass, params, options = {}) {
-//     const component = useComponent();
-//     if (!(ModelClass.prototype instanceof Model)) {
-//         throw new Error(`the model class should extend Model`);
-//     }
-//     const services = {};
-//     for (const key of ModelClass.services) {
-//         services[key] = useService(key);
-//     }
-//     services.orm = services.orm || useService("orm");
-
-//     const model = new ModelClass(component.env, params, services);
-
-//     useBus(
-//         model.bus,
-//         "update",
-//         options.onUpdate ||
-//             (() => {
-//                 component.render(true); // FIXME WOWL reactivity
-//             })
-//     );
-
-//     const globalState = component.props.globalState || {};
-//     const localState = component.props.state || {};
-//     let useSampleModel =
-//         component.props.useSampleModel &&
-//         (!("useSampleModel" in globalState) || globalState.useSampleModel);
-//     model.useSampleModel = useSampleModel;
-//     const orm = model.orm;
-//     let sampleORM = localState.sampleORM;
-//     let started = false;
-
-//     async function load(props) {
-//         const searchParams = getSearchParams(props);
-//         await model.load(searchParams);
-//         if (useSampleModel && !model.hasData()) {
-//             sampleORM =
-//                 sampleORM || buildSampleORM(component.props.resModel, component.props.fields, user);
-//             // Load data with sampleORM then restore real ORM.
-//             model.orm = sampleORM;
-//             await model.load(searchParams);
-//             model.orm = orm;
-//         } else {
-//             useSampleModel = false;
-//             model.useSampleModel = useSampleModel;
-//         }
-//         if (started) {
-//             model.notify();
-//         }
-//     }
-//     onWillStart(async () => {
-//         if (options.onWillStart) {
-//             await options.onWillStart();
-//         }
-//         await load(component.props);
-//         if (options.onWillStartAfterLoad) {
-//             await options.onWillStartAfterLoad();
-//         }
-//         started = true;
-//     });
-//     onWillUpdateProps((nextProps) => {
-//         useSampleModel = false;
-//         load(nextProps);
-//     });
-
-//     // useSetupView({
-//     //     getGlobalState() {
-//     //         if (component.props.useSampleModel) {
-//     //             return { useSampleModel };
-//     //         }
-//     //     },
-//     //     getLocalState: () => {
-//     //         return { sampleORM };
-//     //     },
-//     // });
-
-//     return model;
-// }
