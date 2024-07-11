@@ -8,14 +8,15 @@ export class PersonalExpenseList extends Component {
     static template = 'expense_tracker.PersonalExpenseList';
 
     setup() {
-        this.model = useState(useModel(ExpenseTrackerModel, this.modelParams));
+        this.model = useModel(ExpenseTrackerModel, this.modelParams);
+        this.state = useState({ expenses: [] });
         if (this.props.expenses) {
-            this.model.expenses = this.props.expenses;
+            this.state.expenses = this.props.expenses;
         }
     }
 
     get totalAmount() {
-        return this.model.expenses.reduce((sum, expense) => sum + expense.amount, 0);
+        return this.state.expenses.reduce((sum, expense) => sum + expense.amount, 0);
     }
 
     _onClickExpenseRow(ev) {

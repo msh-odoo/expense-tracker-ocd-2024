@@ -15,12 +15,11 @@ export class ExpenseTrackerModel extends Model {
      * @param {SearchParams} searchParams
      */
     async load(searchParams) {
-        const res = await this.orm.searchRead("personal.expense",
+        return await this.orm.searchRead("personal.expense",
             [["active", "=", true]],
             ["name", "user_id", "date", "amount", "category_id", "icon", "payment_method_id", "tag_ids"],
             { limit: 20 },
         );
-        this.expenses = res;
     }
 
     /**

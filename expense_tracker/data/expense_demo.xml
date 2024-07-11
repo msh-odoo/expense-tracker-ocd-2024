@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="expense_1" model="personal.expense">
+            <field name="name">Lunch at Leela</field>
+            <field name="date" eval="DateTime.now() - relativedelta(days=2)"></field>
+            <field name="amount">2000</field>
+            <field name="category_id" ref="expense_tracker.categ_food"></field>
+            <field name="payment_method_id" ref="payment_method_cash"></field>
+        </record>
+        <record id="expense_2" model="personal.expense">
+            <field name="name">Clothes Purchased from Amazon</field>
+            <field name="date" eval="DateTime.now() - relativedelta(days=2)"></field>
+            <field name="amount">3000</field>
+            <field name="category_id" ref="expense_tracker.categ_grooming"></field>
+            <field name="payment_method_id" ref="payment_method_cash"></field>
+        </record>
+        <record id="expense_3" model="personal.expense">
+            <field name="name">Dinner at Hayat</field>
+            <field name="date" eval="DateTime.now() - relativedelta(days=2)"></field>
+            <field name="amount">2000</field>
+            <field name="category_id" ref="expense_tracker.categ_food"></field>
+            <field name="payment_method_id" ref="payment_method_cash"></field>
+        </record>
+        <record id="expense_4" model="personal.expense">
+            <field name="name">Watched Movie Pathan</field>
+            <field name="date" eval="DateTime.now() - relativedelta(days=2)"></field>
+            <field name="amount">2000</field>
+            <field name="category_id" ref="expense_tracker.categ_entertaintment"></field>
+            <field name="payment_method_id" ref="payment_method_cash"></field>
+        </record>
+        <record id="expense_5" model="personal.expense">
+            <field name="name">Groccery buy from Dmart</field>
+            <field name="date" eval="DateTime.now() - relativedelta(days=2)"></field>
+            <field name="amount">2000</field>
+            <field name="category_id" ref="expense_tracker.categ_daily_needs"></field>
+            <field name="payment_method_id" ref="payment_method_cash"></field>
+        </record>
+        <record id="expense_6" model="personal.expense">
+            <field name="name">Bought Indulekha Shampoo</field>
+            <field name="date" eval="DateTime.now() - relativedelta(days=2)"></field>
+            <field name="amount">2000</field>
+            <field name="category_id" ref="expense_tracker.categ_daily_needs"></field>
+            <field name="payment_method_id" ref="payment_method_cash"></field>
+        </record>
+        <record id="expense_7" model="personal.expense">
+            <field name="name">Belgium Tour</field>
+            <field name="date" eval="DateTime.now() - relativedelta(days=2)"></field>
+            <field name="amount">2000</field>
+            <field name="category_id" ref="expense_tracker.categ_tour"></field>
+            <field name="payment_method_id" ref="payment_method_cash"></field>
+        </record>
+        <record id="expense_8" model="personal.expense">
+            <field name="name">Switzerland Tour</field>
+            <field name="date" eval="DateTime.now() - relativedelta(days=2)"></field>
+            <field name="amount">2000</field>
+            <field name="category_id" ref="expense_tracker.categ_tour"></field>
+            <field name="payment_method_id" ref="payment_method_cash"></field>
+        </record>
+        <record id="expense_9" model="personal.expense">
+            <field name="name">Brunch at TGB</field>
+            <field name="date" eval="DateTime.now() - relativedelta(days=2)"></field>
+            <field name="amount">2000</field>
+            <field name="category_id" ref="expense_tracker.categ_food"></field>
+            <field name="payment_method_id" ref="payment_method_cash"></field>
+        </record>
+        <record id="expense_10" model="personal.expense">
+            <field name="name">Fruits</field>
+            <field name="date" eval="DateTime.now() - relativedelta(days=2)"></field>
+            <field name="amount">2000</field>
+            <field name="category_id" ref="expense_tracker.categ_food"></field>
+            <field name="payment_method_id" ref="payment_method_cash"></field>
+        </record>
+    </data>
+</odoo>

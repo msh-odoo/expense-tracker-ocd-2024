@@ -1,14 +1,4 @@
-// import { user } from "@web/core/user";
-// import { useBus, useService } from "@web/core/utils/hooks";
-// import { SEARCH_KEYS } from "@web/search/with_search/with_search";
-// import { useSetupView } from "@web/views/view_hook";
-// import { buildSampleORM } from "./sample_server";
-
 import { EventBus, useComponent } from "@odoo/owl";
-
-/**
- * @typedef {import("@web/search/search_model").SearchParams} SearchParams
- */
 
 export class Model {
     /**

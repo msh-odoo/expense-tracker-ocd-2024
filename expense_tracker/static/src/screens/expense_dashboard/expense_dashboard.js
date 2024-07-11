@@ -10,26 +10,18 @@ export class Dashboard extends Component {
 
     setup() {
         super.setup();
-        // this.model = useState(useModel(ExpenseTrackerModel, this.modelParams));
-        const component = useComponent();
         this.model = useModel(ExpenseTrackerModel, this.modelParams);
         this.state = useState({ expenses: [] });
         onWillStart(async () => {
-            const res = this.model.load(component.props);
+            const res = await this.model.load(this.props);
             this.state.expenses = res;
         });
         onWillUpdateProps((nextProps) => this.state.expenses = this.model.load(nextProps));
     }
 
-    // get modelParams() {
-    //     return {};
-    // }
-
-    // async willStart() {
-    //     this.datas = await this.fetchData();
-    //     this.state.products = this.datas.products;
-    //     this.env.db.save('datas', this.datas);
-    // }
+    get modelParams() {
+        return {};
+    }
 
 }
 
