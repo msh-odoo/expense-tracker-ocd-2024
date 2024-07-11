@@ -13,10 +13,10 @@ export class Dashboard extends Component {
         this.model = useModel(ExpenseTrackerModel, this.modelParams);
         this.state = useState({ expenses: [] });
         onWillStart(async () => {
-            const res = await this.model.load(this.props);
+            const res = await this.model.load_expenses(this.props);
             this.state.expenses = res;
         });
-        onWillUpdateProps((nextProps) => this.state.expenses = this.model.load(nextProps));
+        onWillUpdateProps((nextProps) => this.state.expenses = this.model.load_expenses(nextProps));
     }
 
     get modelParams() {

@@ -14,7 +14,29 @@ export class ExpenseTrackerModel extends Model {
     /**
      * @param {SearchParams} searchParams
      */
-    async load(searchParams) {
+    async load_categories(searchParams) {
+        return await this.orm.searchRead("expense.category",
+            [],
+            ["name", "icon", "description"],
+            {},
+        );
+    }
+
+    /**
+     * @param {SearchParams} searchParams
+     */
+    async load_tags(searchParams) {
+        return await this.orm.searchRead("expense.tag",
+            [],
+            ["name", "color"],
+            {},
+        );
+    }
+
+    /**
+     * @param {SearchParams} searchParams
+     */
+    async load_expenses(searchParams) {
         return await this.orm.searchRead("personal.expense",
             [["active", "=", true]],
             ["name", "user_id", "date", "amount", "category_id", "icon", "payment_method_id", "tag_ids"],

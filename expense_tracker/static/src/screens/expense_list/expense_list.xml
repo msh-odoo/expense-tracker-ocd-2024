@@ -2,7 +2,12 @@
 <templates xml:space="preserve">
     <t t-name="expense_tracker.PersonalExpenseList">
         <div>
-            <h2>Personal Expenses</h2>
+            <div class="d-flex justify-content-between" t-if="!props.ignoreCreate">
+                <h2>
+                    Personal Expenses
+                </h2>
+                <button class="btn btn-primary" t-on-click="_onCreateExpense">Create Expense</button>
+            </div>
             <div class="d-flex">
                 <table class="table">
                     <thead>

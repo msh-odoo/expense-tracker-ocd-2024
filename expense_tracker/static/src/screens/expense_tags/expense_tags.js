@@ -1,18 +1,20 @@
-import { Component, useState } from '@odoo/owl';
+import { Component, useState, onWillStart, onWillUpdateProps } from '@odoo/owl';
 import { registry } from "@web/core/registry";
-
+import { useModel } from "../../model/model";
+import { ExpenseTrackerModel } from "../../model/expense_tracker_model";
 
 export class TagsList extends Component {
     static template = 'expense_tracker.TagsList';
 
     setup() {
-        this.props.expenses = useState([]);
-        this.state = useState({
-            tags: [
-                { id: 1, name: 'Lunch', color: 1 },
-                { id: 2, name: 'Taxi', color: 2 },
-            ],
+        this.model = useModel(ExpenseTrackerModel, this.modelParams);
+        this.state = useState({ tags: [] });
+
+        onWillStart(async () => {
+            const res = await this.model.load_tags(this.props);
+            this.state.tags = res;
         });
+        onWillUpdateProps((nextProps) => this.state.tags = this.model.load_tags(nextProps));
     }
 
 }
