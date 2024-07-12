@@ -13,7 +13,7 @@
                     </thead>
                     <tbody>
                         <t t-foreach="state.categories" t-as="category" t-key="category.id">
-                            <tr t-on-click="_onClickAddCategory">
+                            <tr t-att-data-id="category.id" t-on-click="_onClickCategory">
                                 <td><t t-esc="category.icon"/></td>
                                 <td><t t-esc="category.name"/></td>
                             </tr>

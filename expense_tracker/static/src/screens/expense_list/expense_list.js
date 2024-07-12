@@ -27,11 +27,11 @@ export class PersonalExpenseList extends Component {
     }
 
     _onCreateExpense(ev) {
-        this.env.bus.trigger('change_screen', { 'screen_name': 'ExpenseForm' });
+        this.env.bus.trigger('change_screen', { 'screen_name': 'ExpenseForm', model: "personal.expense", isNew: true });
     }
 
     _onClickExpenseRow(ev) {
-        this.env.bus.trigger('change_screen', { 'screen_name': 'ExpenseForm' });
+        this.env.bus.trigger('change_screen', { 'screen_name': 'ExpenseForm', model: "personal.expense", id: ev.currentTarget.getAttribute("data-id") });
     }
 }
 

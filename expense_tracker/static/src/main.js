@@ -2,7 +2,6 @@ import { browser } from "@web/core/browser/browser";
 import { rpc } from "./core/rpc.js";
 import { DB } from "./core/db.js";
 import { App, EventBus } from "@odoo/owl";
-// import { templates } from "@web/core/assets";
 import { getTemplate } from "@web/core/templates";
 import { ExpenseTracker } from "./expense_tracker";
 
@@ -28,7 +27,6 @@ owl.whenReady(async () => {
         // translateFn: _t,
     });
     const root = await app.mount(document.body);
-    // mount(Ecommerce, document.body, { dev: true, env });
 });
 
 /**

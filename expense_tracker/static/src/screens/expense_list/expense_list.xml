@@ -20,7 +20,7 @@
                     </thead>
                     <tbody>
                         <t t-foreach="state.expenses" t-as="expense" t-key="expense.id">
-                            <tr t-on-click="_onClickExpenseRow">
+                            <tr t-att-data-id="expense.id" t-on-click="_onClickExpenseRow">
                                 <td><t t-esc="expense.name"/></td>
                                 <td><t t-esc="expense.date"/></td>
                                 <td><t t-esc="expense.amount"/></td>

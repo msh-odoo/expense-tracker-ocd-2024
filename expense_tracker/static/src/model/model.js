@@ -8,6 +8,7 @@ export class Model {
     constructor(env, params, options) {
         this.env = env;
         this.orm = options.orm;
+        this.rpc = options.rpc;
         this.bus = new EventBus();
         this.setup(params, options);
     }
@@ -62,6 +63,6 @@ export class Model {
  */
 export function useModel(ModelClass, params = {}, options = {}) {
     const component = useComponent();
-    const model = new ModelClass(component.env, params, { orm: component.env.orm });
+    const model = new ModelClass(component.env, params, { orm: component.env.orm, rpc: component.env.rpc });
     return model;
 }

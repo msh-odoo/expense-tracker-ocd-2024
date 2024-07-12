@@ -34,6 +34,25 @@ export class ExpenseTrackerModel extends Model {
     }
 
     /**
+     * @param {Object} params
+     */
+    async load_data(params) {
+        return await this.rpc(`/expense/get_form_data/${params.model}/${params.id || ""}`, {
+            isNew: params.isNew,
+        });
+    }
+
+    /**
+     * @param {Object} params
+     */
+    // async get_expense_category_data(params) {
+    //     return await this.rpc("/expense/get_expense_category_data", {
+    //         id: params.id,
+    //         isNew: params.isNew,
+    //     });
+    // }
+
+    /**
      * @param {SearchParams} searchParams
      */
     async load_expenses(searchParams) {

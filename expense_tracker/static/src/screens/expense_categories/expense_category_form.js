@@ -5,13 +5,14 @@ import { registry } from "@web/core/registry";
 class ExpenseCategoryForm extends Component {
     static template = "expense_tracker.ExpenseCategoryForm";
     setup() {
-        this.state = useState({
-            newCategory: {
-                icon: '',
-                name: '',
-            },
-            categories: [[1, 'Food'], [2, 'Entertaintment']] // TODO: MSH: Need to fetch from server and maybe use model structure
+        this.state = useState({ data: {} });
+        this.title = "Category";
+
+        onWillStart(async () => {
+            const res = await this.model.load_data(this.props);
+            this.state.data = res;
         });
+        onWillUpdateProps((nextProps) => this.state.expense_data = this.model.load_data(nextProps));
     }
 
     _onAddCategory(ev) {

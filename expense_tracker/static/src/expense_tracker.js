@@ -4,6 +4,8 @@ import { Container } from "./components/container/container";
 import { registry } from "@web/core/registry";
 import { ORM } from "@web/core/orm_service";
 import { Dashboard } from "./screens/expense_dashboard/expense_dashboard";
+import { rpc } from "@web/core/network/rpc";
+
 // import { DialogContainer } from "./components/dialog/dialog_container";
 
 export class ExpenseTracker extends Component {
@@ -13,7 +15,7 @@ export class ExpenseTracker extends Component {
         super.setup();
         const orm = new ORM();
         // Use of useSubEnv to pass orm to this component as well as all it's children
-        useSubEnv({ orm });
+        useSubEnv({ orm, rpc });
         this.mainScreen = useState({ name: 'Dashboard', component: Dashboard });
         this.env.bus.addEventListener("change_screen", this.onChangeScreen.bind(this));
         // this.env.bus.addEventListener("add_dialog", this.onAddDialog.bind(this));
@@ -36,7 +38,7 @@ export class ExpenseTracker extends Component {
         const screen = screenRegistry.get(ev.detail.screen_name)
         this.mainScreen.name = ev.detail.screen_name;
         this.mainScreen.component = screen;
-        this.mainScreenProps = { detail: ev.detail };
+        this.mainScreenProps = { ...ev.detail };
     }
 }
 

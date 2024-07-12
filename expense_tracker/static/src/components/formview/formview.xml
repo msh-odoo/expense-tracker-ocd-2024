@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="expense_tracker.FormView">
+        <div class="d-flex" t-ref="formElement">
+            <t t-slot="title"></t>
+            <div class="w-100">
+                <!-- <form class="w-100" t-on-submit.prevent="formAction"> -->
+                <div class="form-group" t-foreach="props.data.record" t-as="field_val" t-key="field_val">
+                    <label>Description:</label>
+                    <input class="form-control" type="text" required="true"/>
+                </div>
+                <div>
+                    <a href="#" class="btn btn-primary" t-on-click="_onClickSubmitForm">Save</a>
+                </div>
+            </div>
+            <!-- </form> -->
+        </div>
+    </t>
+</templates>

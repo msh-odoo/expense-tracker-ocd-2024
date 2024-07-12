@@ -16,8 +16,12 @@ class ExpenseCategoriesList extends Component {
         onWillUpdateProps((nextProps) => this.state.categories = this.model.load_categories(nextProps));
     }
 
-    _onClickAddCategory() {
-        this.env.bus.trigger('change_screen', { 'screen_name': 'ExpenseCategoryForm' });
+    _onClickAddCategory(ev) {
+        this.env.bus.trigger('change_screen', { 'screen_name': 'ExpenseCategoryForm', "model": "expense.category", isNew: true });
+    }
+
+    _onClickCategory(ev) {
+        this.env.bus.trigger('change_screen', { 'screen_name': 'ExpenseCategoryForm', "model": "expense.category", id: ev.currentTarget.getAttribute("data-id") });
     }
 }
 
