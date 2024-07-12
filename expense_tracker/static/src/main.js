@@ -6,6 +6,27 @@ import { getTemplate } from "@web/core/templates";
 import { ExpenseTracker } from "./expense_tracker";
 
 
+function cast(value) {
+    return !value || isNaN(value) ? value : Number(value);
+}
+
+function parseString(str) {
+    const parts = str.split("&");
+    const result = {};
+    for (const part of parts) {
+        const [key, value] = part.split("=");
+        const decoded = decodeURIComponent(value || "");
+        result[key] = cast(decoded);
+    }
+    return result;
+}
+
+function parseHash() {
+    const location = window.location;
+    const { pathname, search, hash } = location;
+    return hash && hash !== "#" ? parseString(hash.slice(1)) : {};
+}
+
 // The following code ensures that owl mount the component when ready.
 // `templates` contains templates contained in the bundles.
 //
@@ -16,6 +37,25 @@ owl.whenReady(async () => {
     const bus = new EventBus();
     const db = new DB();
     const env = { bus, db, rpc };
+
+    // fr_FR translations
+    const hash = parseHash();
+
+    const translations = {};
+    if (hash.lang) {
+        const terms = {
+            "Description:": "Description:",
+            "Date:": "Date:",
+            "Amount:": "Montante:",
+            "Category:": "Catégorie:",
+        };
+        Object.assign(translations, terms);
+    }
+
+    const translateFn = (str) => {
+        return translations[str] || str;
+    }
+
     // await startServices(env);
     const app = new App(ExpenseTracker, {
         env,
@@ -24,7 +64,7 @@ owl.whenReady(async () => {
         // warnIfNoStaticProps: !session.test_mode,
         name: ExpenseTracker.constructor.name,
         // translatableAttributes: ["data-tooltip"],
-        // translateFn: _t,
+        translateFn: translateFn,
     });
     const root = await app.mount(document.body);
 });
