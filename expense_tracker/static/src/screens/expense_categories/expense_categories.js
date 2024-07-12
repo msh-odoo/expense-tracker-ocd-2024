@@ -8,6 +8,7 @@ class ExpenseCategoriesList extends Component {
     setup() {
         this.model = useModel(ExpenseTrackerModel, this.modelParams);
         this.state = useState({ categories: [] });
+        this.modelName = "expense.category";
 
         onWillStart(async () => {
             const res = await this.model.load_categories(this.props);

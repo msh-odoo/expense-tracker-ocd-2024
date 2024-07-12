@@ -10,16 +10,20 @@ export class PersonalExpenseList extends Component {
     setup() {
         this.model = useModel(ExpenseTrackerModel, this.modelParams);
         this.state = useState({ expenses: [] });
+        this.modelName = "personal.expense";
 
+        const options = {
+            model: this.modelName,
+        };
         if (this.props.expenses) {
             this.state.expenses = this.props.expenses;
         } else {
             onWillStart(async () => {
-                const res = await this.model.load_expenses(this.props);
+                const res = await this.model.load_expenses(options);
                 this.state.expenses = res;
             });
         }
-        onWillUpdateProps((nextProps) => this.state.expenses = this.model.load_expenses(nextProps));
+        onWillUpdateProps((nextProps) => this.state.expenses = this.model.load_expenses(options));
     }
 
     get totalAmount() {

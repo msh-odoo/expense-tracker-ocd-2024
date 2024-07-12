@@ -9,6 +9,7 @@ export class TagsList extends Component {
     setup() {
         this.model = useModel(ExpenseTrackerModel, this.modelParams);
         this.state = useState({ tags: [] });
+        this.modelName = "expense.tag";
 
         onWillStart(async () => {
             const res = await this.model.load_tags(this.props);
