@@ -1,8 +1,4 @@
-import { Component, useRef, useState, onWillStart, onWillUpdateProps } from '@odoo/owl';
-import { registry } from "@web/core/registry";
-import { useModel } from "../../model/model";
-import { ExpenseTrackerModel } from "../../model/expense_tracker_model";
-
+import { Component, useRef } from '@odoo/owl';
 
 export class FormView extends Component {
     static template = "expense_tracker.FormView";

@@ -36,9 +36,20 @@ export class ExpenseTrackerModel extends Model {
     /**
      * @param {Object} params
      */
+    async load_expense_form_data(params) {
+        return await this.rpc(`/expense/get_expense_form_data/${params.model}/${params.id || ""}`, {
+            isNew: params.isNew,
+            fields: params.fields,
+        });
+    }
+
+    /**
+     * @param {Object} params
+     */
     async load_data(params) {
         return await this.rpc(`/expense/get_form_data/${params.model}/${params.id || ""}`, {
             isNew: params.isNew,
+            fields: params.fields,
         });
     }
 

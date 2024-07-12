@@ -10,19 +10,38 @@ class ExpenseTracker(http.Controller):
         """
         return request.render('expense_tracker.root')
 
-    @http.route('/expense/get_form_data/<string:model>/<int:id>', type='json', auth='user')
-    def get_form_data(self, model=None, id=False, **kw):
+    @http.route('/expense/get_expense_form_data/<string:model>/<int:id>', type='json', auth='user')
+    def get_expense_form_data(self, model=None, id=False, **kw):
         data = {}
         if id:
-            domain = kw.get("domain") or []
+            domain = [("id", "=", id)]
             record = request.env[model].sudo().search_read(
                 domain,
                 kw.get("fields") or ["id", "name"]
             )
         else:
             record = request.env["personal.expense"].default_get([])
-        data["record"] = record
-        data["record_fields"] = request.env["personal.expense"].sudo().fields_get()
+
+        data["record"] = record[0]
+        data["record_fields"] = request.env[model].sudo().fields_get()
+
+        categories = request.env['expense.category'].sudo().search_read([], [])
+        data["categories"] = categories
+        return data
+
+    @http.route('/expense/get_form_data/<string:model>/<int:id>', type='json', auth='user')
+    def get_form_data(self, model=None, id=False, **kw):
+        data = {}
+        if id:
+            domain = [("id", "=", id)]
+            record = request.env[model].sudo().search_read(
+                domain,
+                kw.get("fields") or ["id", "name"]
+            )
+        else:
+            record = request.env[model].default_get([])
+        data["record"] = record[0]
+        data["record_fields"] = request.env[model].sudo().fields_get()
 
         # categories = request.env['expense.category'].sudo().search_read([], [])
         # data["category_id"] = categories

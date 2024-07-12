@@ -16,6 +16,7 @@ class ExpenseCategoryForm extends Component {
         const options = {
             model: this.modelName,
             id: this.props.id,
+            fields: ["id", "name", "icon", "description"],
         };
 
         onWillStart(async () => {
