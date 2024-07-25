@@ -27,7 +27,6 @@ class ExpenseForm extends Component {
     }
 
     addExpense() {
-        debugger;
         this.trigger('expense-added', { ...this.state.newExpense });
         this.state.newExpense = {
             name: '',

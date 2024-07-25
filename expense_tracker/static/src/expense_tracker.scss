@@ -58,8 +58,14 @@
     flex-grow: 1;
     padding: 20px;
     height: 100vh;
+    .o_view_title {
+        color: white;
+    }
     .content-area {
         margin-top: 20px;
+        table {
+            color: white;
+        }
     }
 }
 

@@ -2,7 +2,7 @@
 <templates xml:space="preserve">
 
     <t t-name="expense_tracker.FormView">
-        <div class="d-flex" t-ref="formElement">
+        <div class="d-flex flex-column" t-ref="formElement">
             <t t-slot="title"></t>
             <div class="w-100">
                 <div class="form-group" t-foreach="props.data.record" t-as="key" t-key="field_val">

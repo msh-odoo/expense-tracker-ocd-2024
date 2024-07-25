@@ -2,9 +2,11 @@
 <templates xml:space="preserve">
     <t t-name="expense_tracker.ExpenseForm">
         <div class="expense-form">
-            <FormViewStatic data="state.data" t-on-submit="addExpense">
+            <FormViewStatic data="state.data" t-on-submitForm="addExpense">
                 <t t-set-slot="title">
-                    <h2><t t-out="this.title"/></h2>
+                    <div class="">
+                        <h2><t t-out="this.title"/></h2>
+                    </div>
                 </t>
                 <t t-set-slot="content">
                     <div class="w-100">
@@ -31,7 +33,9 @@
                     </div>
                 </t>
                 <t t-set-slot="footer">
-                    <button class="btn btn-primary" type="submit">Add Expense</button>
+                    <div class="w-100">
+                        <button class="btn btn-primary" type="submit">Add Expense</button>
+                    </div>
                 </t>
             </FormViewStatic>
         </div>

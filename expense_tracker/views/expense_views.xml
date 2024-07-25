@@ -36,7 +36,7 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="color"/>
+                        <field name="color" widget="color"/>
                     </group>
                 </sheet>
             </form>

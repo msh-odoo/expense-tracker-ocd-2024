@@ -6,10 +6,9 @@ import { ORM } from "@web/core/orm_service";
 import { Dashboard } from "./screens/expense_dashboard/expense_dashboard";
 import { rpc } from "@web/core/network/rpc";
 
-// import { DialogContainer } from "./components/dialog/dialog_container";
-
 export class ExpenseTracker extends Component {
     static template = "expense_tracker.root";
+    static components = { Header, Container };
 
     setup() {
         super.setup();

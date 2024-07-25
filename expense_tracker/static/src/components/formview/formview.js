@@ -9,8 +9,7 @@ export class FormView extends Component {
 
     _onClickSubmitForm(ev) {
         ev.preventDefault();
-        debugger;
-        const event = new CustomEvent("submit", { bubbles: true });
+        const event = new CustomEvent("submitForm", { bubbles: true });
         this.formElement.el.dispatchEvent(event);
     }
 }

@@ -8,8 +8,6 @@ export class Container extends Component {
     static template = "expense_tracker.container";
 }
 
-Container.components = { ExpenseTrackerDashboard, ExpenseList };
-
 Container.props = {
     mainScreenProps: { type: Object, optional: true },
     tname: { type: String },
