@@ -1,4 +1,4 @@
-import { Component, useState, onWillStart, onWillUpdateProps } from '@odoo/owl';
+import { Component, useState, onWillStart, onWillUpdateProps, useEffect, useRef } from '@odoo/owl';
 import { registry } from "@web/core/registry";
 import { useModel } from "../../model/model";
 import { ExpenseTrackerModel } from "../../model/expense_tracker_model";
@@ -10,7 +10,7 @@ class ExpenseForm extends Component {
     static components = { FormViewStatic }
     setup() {
         this.model = useModel(ExpenseTrackerModel, this.modelParams);
-        this.state = useState({ data: {} });
+        this.state = useState({ data: {}, isValidForm: true });
         this.title = "Expense";
         this.modelName = "personal.expense";
         const options = {
@@ -20,20 +20,56 @@ class ExpenseForm extends Component {
         };
 
         onWillStart(async () => {
-            const res = await this.model.load_expense_form_data(options);
+            let res = {};
+            if (this.props.id) {
+                res = await this.model.load_expense_form_data(options);
+            }
             this.state.data = res;
         });
-        onWillUpdateProps((nextProps) => this.state.data = this.model.load_expense_form_data(options));
+        onWillUpdateProps((nextProps) => {
+            if (nextProps.id) {
+                this.state.data = ifthis.model.load_expense_form_data(options);
+            }
+        });
+
+        this.form = useRef("form");
+        useEffect(
+            () => {
+                debugger;
+                this.markFormInvalid();
+            },
+            () => [this.state.isValidForm]);
     }
 
-    addExpense() {
-        this.trigger('expense-added', { ...this.state.newExpense });
-        this.state.newExpense = {
-            name: '',
-            date: '',
-            amount: 0,
-            category: 'food'
-        };
+    /**
+     * Checks form valid or not based on given value.
+     */
+    checkFormValid() {
+        let isValid = true;
+        this.form.el.querySelectorAll(".form-control").forEach((elem) => {
+            if (elem.required && !elem.value) {
+                isValid = false;
+            }
+        });
+        debugger;
+        this.state.isValidForm = isValid;
+    }
+
+    markFormInvalid() {
+        debugger;
+        this.form.el.classList.toggle('o_invalid', !this.state.isValidForm);
+    }
+
+    _onClickSubmitForm(ev) {
+        ev.preventDefault();
+        this.checkFormValid();
+        // this.trigger('expense-added', { ...this.state.newExpense });
+        // this.state.newExpense = {
+        //     name: '',
+        //     date: '',
+        //     amount: 0,
+        //     category: 'food'
+        // };
     }
 }
 

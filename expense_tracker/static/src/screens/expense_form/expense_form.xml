@@ -2,31 +2,33 @@
 <templates xml:space="preserve">
     <t t-name="expense_tracker.ExpenseForm">
         <div class="expense-form">
-            <FormViewStatic data="state.data" t-on-submitForm="addExpense">
+            <FormViewStatic data="state.data">
                 <t t-set-slot="title">
                     <div class="">
                         <h2><t t-out="this.title"/></h2>
                     </div>
                 </t>
                 <t t-set-slot="content">
-                    <div class="w-100">
+                    <div class="w-100" t-ref="form">
                         <div class="form-group">
                             <label>Description:</label>
-                            <input class="form-control" type="text" t-att-value="state.data.record.name" required="true"/>
+                            <input class="form-control" type="text" t-att-value="state.data.record and state.data.record.name" required="true"/>
                         </div>
                         <div class="form-group">
                             <label>Date:</label>
-                            <input class="form-control" type="date" t-att-value="state.data.record.date" required="true" />
+                            <input class="form-control" type="date" t-att-value="state.data.record and state.data.record.date" required="true" />
                         </div>
                         <div class="form-group">
                             <label>Amount:</label>
-                            <input class="form-control" type="number" t-att-value="state.data.record.amount" required="true" />
+                            <input class="form-control" type="number" t-att-value="state.data.record and state.data.record.amount" required="true" />
                         </div>
                         <div class="form-group">
                             <label>Category:</label>
                             <select class="form-control">
-                                <t t-foreach="state.data.categories" t-as="category" t-key="category.id">
-                                    <option t-att-value="category.id"><t t-out="category.name"/></option>
+                                <t t-if="state.data and state.data.categories">
+                                    <t t-foreach="state.data.categories" t-as="category" t-key="category.id">
+                                        <option t-att-value="category.id"><t t-out="category.name"/></option>
+                                    </t>
                                 </t>
                             </select>
                         </div>
@@ -34,7 +36,7 @@
                 </t>
                 <t t-set-slot="footer">
                     <div class="w-100">
-                        <button class="btn btn-primary" type="submit">Add Expense</button>
+                        <button class="btn btn-primary" type="button" t-on-click="_onClickSubmitForm">Add Expense</button>
                     </div>
                 </t>
             </FormViewStatic>
