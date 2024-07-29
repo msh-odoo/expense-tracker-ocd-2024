@@ -16,12 +16,46 @@
         'data/expense_demo.xml',
     ],
     'assets': {
-        'web.assets_backend': [
-            'expense_tracker/static/src/backend/**/*',
-        ],
+        # 'web.assets_backend': [
+        #     'expense_tracker/static/src/backend/**/*',
+        # ],
         'expense_tracker.assets_expense': [
             ('include', 'web.assets_backend'),
             'expense_tracker/static/src/**/*',
+        ],
+        # Assets for test framework and setup
+        'expense_tracker.assets_unit_tests_setup': [
+            'web/static/src/module_loader.js',
+
+            'web/static/lib/owl/owl.js',
+            'web/static/lib/owl/odoo_module.js',
+
+            'web/static/lib/hoot/**/*',
+            'web/static/lib/hoot-dom/**/*',
+            ('remove', 'web/static/lib/hoot/tests/**/*'),
+
+            # Odoo mocks
+            # ! must be loaded before other @web assets
+            'web/static/tests/_framework/mock_module_loader.js',
+
+            # Assets for features to test (views, services, fields, ...)
+            # Typically includes most files in 'web.web.assets_backend'
+            ('include', 'web.assets_backend'),
+            ('include', 'web.assets_backend_lazy'),
+            'expense_tracker/static/src/**/*',
+
+            'web/static/src/public/public_component_service.js',
+            'web/static/src/webclient/clickbot/clickbot.js',
+        ],
+        # Unit test files
+        'expense_tracker.assets_unit_tests': [
+            # 'web/static/tests/**/*',
+            'web/static/tests/_framework/**/*',
+            'web/static/tests/web_test_helpers.js',
+            'expense_tracker/static/tests/**/*',
+
+            ('remove', 'web/static/tests/_framework/mock_module_loader.js'),
+            # ('remove', 'web/static/tests/legacy/**/*'), # to remove when all legacy tests are ported
         ],
     },
     'installable': True,

@@ -1,4 +1,4 @@
-import { Component, useState, onWillStart, onWillUpdateProps, useEffect, useRef } from '@odoo/owl';
+import { Component, useState, onWillStart, onWillUpdateProps, onMounted, onPatched, useEffect, useRef } from '@odoo/owl';
 import { registry } from "@web/core/registry";
 import { useModel } from "../../model/model";
 import { ExpenseTrackerModel } from "../../model/expense_tracker_model";
@@ -13,6 +13,8 @@ class ExpenseForm extends Component {
         this.state = useState({ data: {}, isValidForm: true });
         this.title = "Expense";
         this.modelName = "personal.expense";
+        this.footer = useRef("footer");
+        this.form = useRef("form");
         const options = {
             model: this.modelName,
             id: this.props.id,
@@ -32,13 +34,22 @@ class ExpenseForm extends Component {
             }
         });
 
-        this.form = useRef("form");
+        onMounted(() => {
+            this.form.el.querySelector("input.form-control").focus();
+        });
+
+        onPatched(() => {
+            this.form.el.querySelector("input.form-control").focus();
+        });
+
         useEffect(
-            () => {
-                debugger;
-                this.markFormInvalid();
+            (formEl) => {
+                const boundedBounceEffect = this._onBounceEffect.bind(this);
+                formEl.addEventListener("click", boundedBounceEffect);
+                return () => formEl.removeEventListener("click", boundedBounceEffect);
             },
-            () => [this.state.isValidForm]);
+            () => [this.form.el]
+        );
     }
 
     /**
@@ -51,13 +62,19 @@ class ExpenseForm extends Component {
                 isValid = false;
             }
         });
-        debugger;
         this.state.isValidForm = isValid;
     }
 
     markFormInvalid() {
-        debugger;
         this.form.el.classList.toggle('o_invalid', !this.state.isValidForm);
+    }
+
+    _onBounceEffect() {
+        const buttonEl = this.footer.el.querySelector("button");
+        buttonEl.classList.add("bounce");
+        setTimeout(() => {
+            buttonEl.classList.remove("bounce");
+        }, 500);
     }
 
     _onClickSubmitForm(ev) {

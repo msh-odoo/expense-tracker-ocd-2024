@@ -9,7 +9,10 @@
                     </div>
                 </t>
                 <t t-set-slot="content">
-                    <div class="w-100" t-ref="form">
+                    <div t-attf-class="{{!state.isValidForm and 'o_invalid' or ''}} w-100" t-ref="form">
+                        <div t-if="!state.isValidForm" class="alert alert-danger">
+                            Please enter right data!
+                        </div>
                         <div class="form-group">
                             <label>Description:</label>
                             <input class="form-control" type="text" t-att-value="state.data.record and state.data.record.name" required="true"/>
@@ -35,7 +38,7 @@
                     </div>
                 </t>
                 <t t-set-slot="footer">
-                    <div class="w-100">
+                    <div class="w-100" t-ref="footer">
                         <button class="btn btn-primary" type="button" t-on-click="_onClickSubmitForm">Add Expense</button>
                     </div>
                 </t>

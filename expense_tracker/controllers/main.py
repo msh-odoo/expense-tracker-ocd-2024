@@ -56,10 +56,6 @@ class ExpenseTracker(http.Controller):
         )
         return data
 
-
-
-
-
     @http.route('/expense/get_expense_category_data', type='json', auth='user')
     def get_ecommerce_data(self, **kw):
         data = {}
@@ -73,3 +69,7 @@ class ExpenseTracker(http.Controller):
         data["category"] = category
         data["category_fields"] = request.env["expense.category"].sudo().fields_get()
         return data
+
+    @http.route('/expense/tests', type='http', auth='user', readonly=True)
+    def unit_tests_suite(self, mod=None, **kwargs):
+        return request.render('expense_tracker.unit_tests_suite', {'session_info': {'view_info': request.env['ir.ui.view'].get_view_info()}})

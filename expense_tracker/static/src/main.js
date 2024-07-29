@@ -36,7 +36,8 @@ function parseHash() {
 owl.whenReady(async () => {
     const bus = new EventBus();
     const db = new DB();
-    const env = { bus, db, rpc };
+    const datetime = new Date();
+    const env = { bus, db, rpc, datetime };
 
     // fr_FR translations
     const hash = parseHash();

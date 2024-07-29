@@ -1,9 +1,11 @@
 
 import { Component, useState } from "@odoo/owl";
+import { Time } from "../time/time";
 // import { Search } from "./search";
 
 export class Header extends Component {
     static template = "expense_tracker.header";
+    static components = { Time };
 
     setup() {
         this.state = useState({ activeMenuItem: "home" });
@@ -20,5 +22,3 @@ export class Header extends Component {
         this.env.bus.trigger('change_screen', { 'screen_name': screenName });
     }
 }
-
-// Header.components = { Search }
