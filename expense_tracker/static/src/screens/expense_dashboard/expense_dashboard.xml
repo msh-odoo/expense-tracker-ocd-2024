@@ -3,19 +3,29 @@
 
     <t t-name="expense_tracker.Dashboard">
         <div class="o_content o_dashboard">
-            <h2 class="o_view_title">Dashboard</h2>
+            <h1 class="o_view_title">
+                Dashboard
+                <hr />
+            </h1>
             <div class="content-area">
                 <PersonalExpenseList expenses="state.expenses" ignoreCreate="true"/>
-                <div>
-                    <h4>Quick Access</h4>
-                    <div class="row">
-                        <div class="col-6">
-                            <i class="fa fa-calendar" ></i>
-                            <span>+New Expense</span>
-                        </div>
-                        <div class="col-6">
-                            <i class="fa fa-file" ></i>
-                            <span>+New Category</span>
+                <div class="rounded-6 shadow p-4 o_content_modal_rounded_shades" style="margin:0% 5%">
+                    <div>
+                        <h2 class="text-white">Quick Access</h2>
+                        <hr />
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="button" class="btn text-white" style="background-color:rgb(11,11,11); border-radius:1rem;">
+                                    <i class="fa fa-calendar p-3" style="margin:5px 15px 5px 5px; background-color:green; border-radius:360px"></i>
+                                    <span class="fs-3">New Expense</span>
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button type="button" class="btn text-white" style="background-color:rgb(11,11,11); border-radius:1rem;">
+                                    <i class="fa fa-file p-3" style="margin:5px 15px 5px 5px; background-color:#6EACDA; border-radius:360px"></i>
+                                    <span class="fs-3">New Category</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

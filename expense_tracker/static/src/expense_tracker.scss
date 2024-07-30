@@ -71,15 +71,19 @@
 .o_content {
     flex-grow: 1;
     padding: 20px;
-    height: 100vh;
+    height: 100%;
     .o_view_title {
+        margin-left: 5rem;
         color: white;
     }
     .content-area {
-        margin-top: 20px;
         table {
             color: white;
         }
     }
 }
-
+.o_content_modal_rounded_shades {
+    background-color: #333;
+    border-radius: 1rem;
+    margin: 1% 5%;
+}

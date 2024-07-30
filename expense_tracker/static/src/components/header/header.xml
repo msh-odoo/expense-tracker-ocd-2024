@@ -2,24 +2,38 @@
 <templates xml:space="preserve">
 
     <t t-name="expense_tracker.header">
-        <div class="header">
-            <img class="rounded-circle" src="/web/image/res.partner/3/avatar_128"></img>
-            <nav class="mt-4">
-                <ul>
-                    <li t-attf-class="{{ state.activeMenuItem === 'home' ? 'active' : '' }}">
-                        <a t-on-click.prevent="onActivateMenu" data-screen="Dashboard" data-name="home" href="#">Home</a>
-                    </li>
-                    <li t-attf-class="{{ state.activeMenuItem === 'expenses' ? 'active' : '' }}">
-                        <a t-on-click.prevent="onActivateMenu" data-screen="ExpenseList" data-name="expenses" href="#">Expenses</a>
-                    </li>
-                    <li t-attf-class="{{ state.activeMenuItem === 'categories' ? 'active' : '' }}">
-                        <a t-on-click.prevent="onActivateMenu" data-screen="CategoriesList" data-name="categories" href="#">Categories</a>
-                    </li>
-                    <li t-attf-class="{{ state.activeMenuItem === 'tags' ? 'active' : '' }}">
-                        <a t-on-click.prevent="onActivateMenu" data-screen="TagsList" data-name="tags" href="#">Tags</a>
-                    </li>
-                </ul>
-            </nav>
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white" style="width: 280px;">
+            <a href="/" class="d-flex align-items-center justify-content-center">
+                <img class="rounded-circle" src="/web/image/res.partner/3/avatar_128"/>
+            </a>
+            <hr />
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a class="nav-link active text-white" t-attf-class="{{ state.activeMenuItem === 'home' ? 'active' : '' }}" t-on-click.prevent="onActivateMenu" data-screen="Dashboard" data-name="home" href="#">
+                        <i class="fa fa-home fa-lg" width="16" height="16" aria-hidden="true"></i>
+                        <span class="fs-4" style="margin:0 5px">Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" t-attf-class="{{ state.activeMenuItem === 'expenses' ? 'active' : '' }}" t-on-click.prevent="onActivateMenu" data-screen="ExpenseList" data-name="expenses" href="#">
+                        <i class="fa fa-money fa-lg" width="16" height="16" aria-hidden="true"></i>
+                        <span class="fs-4" style="margin:0 5px">Expenses</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white"  t-attf-class="{{ state.activeMenuItem === 'categories' ? 'active' : '' }}" t-on-click.prevent="onActivateMenu" data-screen="CategoriesList" data-name="categories" href="#">
+                        <i class="fa fa-th-large fa-lg" width="16" height="16" aria-hidden="true"></i>
+                        <span class="fs-4" style="margin:0 5px">Categories</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" t-attf-class="{{ state.activeMenuItem === 'tags' ? 'active' : '' }}" t-on-click.prevent="onActivateMenu" data-screen="TagsList" data-name="tags" href="#">
+                        <i class="fa fa-tag fa-lg" width="16" height="16" aria-hidden="true"></i>
+                        <span class="fs-4" style="margin:0 5px">Tags</span>
+                    </a>
+                </li>
+            </ul>
+            <hr />
             <div class="login_since">
                 <Time />
             </div>

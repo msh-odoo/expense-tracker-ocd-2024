@@ -5,41 +5,52 @@
             <FormViewStatic data="state.data">
                 <t t-set-slot="title">
                     <div class="">
-                        <h2><t t-out="this.title"/></h2>
+                        <h1 class="text-white"><t t-out="this.title"/></h1>
                     </div>
+                    <hr />
                 </t>
                 <t t-set-slot="content">
-                    <div t-attf-class="{{!state.isValidForm and 'o_invalid' or ''}} w-100" t-ref="form">
+                    <div t-attf-class="{{!state.isValidForm and 'o_invalid' or ''}} m-auto mt-4" t-ref="form" style="width:70%">
                         <div t-if="!state.isValidForm" class="alert alert-danger">
                             Please enter right data!
                         </div>
-                        <div class="form-group">
-                            <label>Description:</label>
-                            <input class="form-control" type="text" t-att-value="state.data.record and state.data.record.name" required="true"/>
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label class="fs-2 col-sm-3 col-form-label">Description :</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control text-white" t-att-value="state.data.record and state.data.record.name" required="true"/>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Date:</label>
-                            <input class="form-control" type="date" t-att-value="state.data.record and state.data.record.date" required="true" />
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label class="fs-2 col-sm-3 col-form-label">Date :</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control text-white" t-att-value="state.data.record and state.data.record.date" required="true"/>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Amount:</label>
-                            <input class="form-control" type="number" t-att-value="state.data.record and state.data.record.amount" required="true" />
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label class="fs-2 col-sm-3 col-form-label">Amount :</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control text-white" t-att-value="state.data.record and state.data.record.amount" required="true"/>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Category:</label>
-                            <select class="form-control">
-                                <t t-if="state.data and state.data.categories">
-                                    <t t-foreach="state.data.categories" t-as="category" t-key="category.id">
-                                        <option t-att-value="category.id"><t t-out="category.name"/></option>
+                        <div class="mb-4 row form-group d-flex align-items-center">
+                            <label class="fs-2 col-sm-3 col-form-label">Category:</label>
+                            <div class="col-sm-9">
+                                <select class="form-select text-white">
+                                    <t t-if="state.data and state.data.categories">
+                                        <t t-foreach="state.data.categories" t-as="category" t-key="category.id">
+                                            <option class="text-dark" t-att-value="category.id"><t t-out="category.name"/></option>
+                                        </t>
                                     </t>
-                                </t>
-                            </select>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                </t>
-                <t t-set-slot="footer">
-                    <div class="w-100" t-ref="footer">
-                        <button class="btn btn-primary" type="button" t-on-click="_onClickSubmitForm">Add Expense</button>
+                        <t t-set-slot="footer">
+                            <div class="w-100" t-ref="footer">
+                                <button type="button" class="btn btn-primary" t-on-click="_onClickSubmitForm">
+                                    <span class="fs-3">Add Expense</span>
+                                </button>
+                            </div>
+                        </t>
                     </div>
                 </t>
             </FormViewStatic>
