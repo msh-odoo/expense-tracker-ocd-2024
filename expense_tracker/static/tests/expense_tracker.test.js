@@ -1,24 +1,15 @@
-import { expect, test, describe, mountOnFixture } from "@odoo/hoot";
+import { after, expect, test, describe, mountOnFixture } from "@odoo/hoot";
 import { MainComponentsContainer } from "@web/core/main_components_container";
-import { animationFrame } from "@odoo/hoot-mock";
 import { Component, xml, useSubEnv } from "@odoo/owl";
+import { patch } from "@web/core/utils/patch";
 import {
-    contains,
     defineModels,
     fields,
-    findComponent,
-    makeServerError,
     models,
     onRpc,
     makeMockEnv,
-    patchWithCleanup,
 } from "@web/../tests/web_test_helpers";
 
-// import {
-//     contains,
-//     patchWithCleanup,
-// } from "@web/../tests/web_test_helpers";
-import { registry } from "@web/core/registry";
 import { rpc } from "./../src/core/rpc.js";
 import { DB } from "./../src/core/db.js";
 import { EventBus } from "@odoo/owl";
@@ -26,8 +17,17 @@ import { getTemplate } from "@web/core/templates";
 import { ORM } from "@web/core/orm_service";
 
 import { Dashboard } from "./../src/screens/expense_dashboard/expense_dashboard";
-import { ExpenseTracker  } from "../src/expense_tracker.js";
 
+patch(MainComponentsContainer.prototype, {
+    setup() {
+        super.setup();
+
+        hasMainComponent = true;
+        after(() => (hasMainComponent = false));
+    },
+});
+
+let hasMainComponent = false;
 
 async function makeMockedEnv() {
     const bus = new EventBus();
@@ -58,6 +58,30 @@ async function mountWithCleanup(ComponentClass, options) {
     return component;
 }
 
+class ResUsers extends models.Model {
+    _name = "res.users";
+
+    name = fields.Char();
+}
+
+class ExpenseCategory extends models.Model {
+    _name = "expense.category";
+
+    name = fields.Char();
+}
+
+class PaymentMethod extends models.Model {
+    _name = "payment.method";
+
+    name = fields.Char();
+}
+
+class ExpenseTag extends models.Model {
+    _name = "expense.tag";
+
+    name = fields.Char();
+}
+
 class PersonalExpense extends models.Model {
     _name = "personal.expense";
 
@@ -69,27 +93,28 @@ class PersonalExpense extends models.Model {
     icon = fields.Char()
     payment_method_id = fields.Many2one({relation: "payment.method"})
     tag_ids = fields.Many2many({ string: "Companies", relation: "expense.tag" });
-
-    // _records = [
-    //     { id: 1, foo: "yop" },
-    //     { id: 2, foo: "blip" },
-    //     { id: 3, foo: "gnap" },
-    //     { id: 4, foo: "abc" },
-    //     { id: 5, foo: "blop" },
-    // ];
 }
 
-defineModels([PersonalExpense]);
+defineModels([PersonalExpense, ResUsers, ExpenseCategory, PaymentMethod, ExpenseTag]);
 
 
 describe.current.tags("expense");
 
-test("can be rendered", async () => {
+test("dashboard can be rendered", async () => {
     onRpc("personal.expense", "search_read", ({ args, kwargs }) => {
-        // expect(args).toEqual([[["model", "=", "partner"]]]);
-        // expect(kwargs.limit).toBe(1);
-        debugger;
-        return [{}, {}];
+        return [
+            {
+                id: 1,
+                name: "Expense 1",
+                user_id: 1,
+                date: "2022-01-01",
+                amount: 100.0,
+                category_id: 1,
+                icon: "icon1",
+                payment_method_id: 1,
+                tag_ids: [1],
+            },
+        ];
     });
     class MyComponent extends Component {
         static props = {};
@@ -103,20 +128,5 @@ test("can be rendered", async () => {
     }
     await mountWithCleanup(MyComponent, {});
 
-    debugger;
-    expect(`header > nav.o_main_navbar`).toHaveCount(1);
+    expect(`.o_dashboard`).toHaveCount(1);
 });
-
-// test("can render a main component", async () => {
-//     class MyComponent extends Component {
-//         static props = {};
-//         static template = xml`<span class="chocolate">MyComponent</span>`;
-//     }
-
-//     const env = await makeMockEnv();
-//     registry.category("main_components").add("mycomponent", { Component: MyComponent });
-
-//     await mountWithCleanup(WebClient, { env });
-
-//     expect(`.chocolate`).toHaveCount(1);
-// });

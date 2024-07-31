@@ -2,7 +2,7 @@
 <templates xml:space="preserve">
 
     <t t-name="expense_tracker.Dashboard">
-        <div class="o_content">
+        <div class="o_content o_dashboard">
             <h2 class="o_view_title">Dashboard</h2>
             <div class="content-area">
                 <PersonalExpenseList expenses="state.expenses" ignoreCreate="true"/>
