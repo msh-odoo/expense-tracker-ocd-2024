@@ -36,7 +36,7 @@ export class Time extends Component {
         delta -= minutes * 60;
 
         // what's left is seconds
-        const seconds = delta % 60; 
+        const seconds = Math.floor(delta) % 60;
 
         return {
             days: days,
