@@ -2,16 +2,24 @@
 <templates xml:space="preserve">
 
     <t t-name="expense_tracker.FormView">
-        <div class="d-flex flex-column" t-ref="formElement">
+        <div class="d-flex flex-column o_content_modal_rounded_shades p-3" t-ref="formElement" style="margin:7% 5%">
             <t t-slot="title"></t>
-            <div class="w-100">
-                <div class="form-group" t-foreach="props.data.record" t-as="key" t-key="field_val">
+            <hr />
+            <div class="m-auto mt-4" style="width:70%">
+                <div class="mb-3 row d-flex align-items-center" t-foreach="props.data.record" t-as="key" t-key="field_val">
+                    <t t-set="fieldInfo" t-value="props.data.record_fields[key]"/>
+                    <label class="fs-2 col-sm-3 col-form-label"><t t-out="fieldInfo.string"/></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control text-white" t-att-value="props.data.record[key]" required="true"/>
+                    </div>
+                </div>
+                <!-- <div class="form-group" t-foreach="props.data.record" t-as="key" t-key="field_val">
                     <t t-set="fieldInfo" t-value="props.data.record_fields[key]"/>
                     <label><t t-out="fieldInfo.string"/></label>
                     <input class="form-control" type="text" required="true" t-att-value="props.data.record[key]"/>
-                </div>
+                </div> -->
                 <div>
-                    <a href="#" class="btn btn-primary" t-on-click="_onClickSubmitForm">Save</a>
+                    <a href="#" class="btn btn-primary" t-on-click="_onClickSubmitForm"><span class="fs-3">Save</span></a>
                 </div>
             </div>
         </div>

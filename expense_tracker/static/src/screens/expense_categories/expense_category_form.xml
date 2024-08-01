@@ -4,7 +4,7 @@
         <div class="expense-form">
             <FormView data="state.data" t-on-submitForm="_onAddCategory">
                 <t t-set-slot="title">
-                    <h2><t t-out="this.title"/></h2>
+                    <h2 class="text-white"><t t-out="this.title"/></h2>
                 </t>
             </FormView>
             <!-- <h2>Add Category</h2>

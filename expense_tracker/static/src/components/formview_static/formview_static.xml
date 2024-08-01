@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
     <t t-name="expense_tracker.FormViewStatic">
-        <div class="d-flex flex-column" t-ref="formElement">
+        <div class="d-flex flex-column rounded-6 shadow p-5 o_content_modal_rounded_shades" t-ref="formElement" style="margin: 7% 5%;">
             <t t-slot="title"/>
             <t t-slot="content"/>
             <t t-slot="footer"/>
