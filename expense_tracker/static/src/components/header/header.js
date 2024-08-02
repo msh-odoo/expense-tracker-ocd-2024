@@ -19,6 +19,6 @@ export class Header extends Component {
         const menuName = ev.currentTarget.getAttribute('data-name');
         this.state.activeMenuItem = menuName;
         const screenName = ev.currentTarget.getAttribute('data-screen');
-        this.env.bus.trigger('change_screen', { 'screen_name': screenName });
+        this.env.bus.trigger('change_screen', { 'screen_name': screenName});
     }
 }
