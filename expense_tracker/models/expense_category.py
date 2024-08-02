@@ -1,5 +1,6 @@
 from odoo import models, fields
 
+
 class ExpenseCategory(models.Model):
     _name = 'expense.category'
     _description = 'Expense Category'

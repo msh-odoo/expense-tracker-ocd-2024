@@ -1,7 +1,6 @@
 
 import { Component, useState } from "@odoo/owl";
 import { Time } from "../time/time";
-// import { Search } from "./search";
 
 export class Header extends Component {
     static template = "expense_tracker.header";
@@ -9,6 +8,7 @@ export class Header extends Component {
 
     setup() {
         this.state = useState({ activeMenuItem: "home" });
+        this.env.bus.addEventListener("change_active_menu", this.changeActiveMenu.bind(this));
     }
 
     onClickLogo() {
@@ -19,6 +19,10 @@ export class Header extends Component {
         const menuName = ev.currentTarget.getAttribute('data-name');
         this.state.activeMenuItem = menuName;
         const screenName = ev.currentTarget.getAttribute('data-screen');
-        this.env.bus.trigger('change_screen', { 'screen_name': screenName});
+        this.env.bus.trigger('change_screen', { 'screen_name': screenName, ignoreCreate: false });
+    }
+
+    changeActiveMenu(ev) {
+        this.state.activeMenuItem = ev.detail;
     }
 }
