@@ -3,7 +3,7 @@ import { registry } from "@web/core/registry";
 import { useModel } from "../../model/model";
 import { ExpenseTrackerModel } from "../../model/expense_tracker_model";
 
-class ExpenseCategoriesList extends Component {
+export class ExpenseCategoriesList extends Component {
     static template = "expense_tracker.CategoriesList";
     setup() {
         this.model = useModel(ExpenseTrackerModel, this.modelParams);
