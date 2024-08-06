@@ -4,7 +4,8 @@
     <t t-name="expense_tracker_dashboard.ExpenseDashboard">
         <Layout display="display" className="'o_dashboard h-100'">
             <t t-set-slot="layout-buttons">
-                Hello dashboard
+                <button class="btn btn-primary" t-on-click="openExpenseView">Expenses</button>
+                <button class="btn btn-primary" t-on-click="openCategories">Categories</button>
             </t>
             some content
         </Layout>
