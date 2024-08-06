@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
             <field name="user_id" position="after">
-                <field name="duration" widget="timer"/>
+                <field name="duration" widget="timer" options="{'no_seconds': True}"/>
             </field>
         </field>
     </record>
