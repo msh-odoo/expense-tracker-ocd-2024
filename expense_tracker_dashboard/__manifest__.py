@@ -24,7 +24,11 @@
     'assets': {
         'web.assets_backend': [
             'expense_tracker_dashboard/static/src/**/*',
+            ('remove', 'expense_tracker_dashboard/static/src/dashboard/**/*'),
         ],
+        'expense_tracker_dashboard.dashboard': [
+            'expense_tracker_dashboard/static/src/dashboard/**/*'
+        ]
     },
     'license': 'AGPL-3'
 }
