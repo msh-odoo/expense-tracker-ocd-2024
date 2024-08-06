@@ -19,6 +19,7 @@ export class GalleryController extends Component {
             new this.props.Model(
                 this.orm,
                 this.props.resModel,
+                this.props.fields,
                 this.props.archInfo,
             )
         );
