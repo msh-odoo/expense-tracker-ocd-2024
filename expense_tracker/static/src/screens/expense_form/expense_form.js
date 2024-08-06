@@ -4,7 +4,6 @@ import { useModel } from "../../model/model";
 import { ExpenseTrackerModel } from "../../model/expense_tracker_model";
 import { FormViewStatic } from '../../components/formview_static/formview_static';
 
-
 class ExpenseForm extends Component {
     static template = "expense_tracker.ExpenseForm";
     static components = { FormViewStatic }
@@ -20,17 +19,14 @@ class ExpenseForm extends Component {
             id: this.props.id,
             fields: ["id", "name", "user_id", "date", "amount", "category_id", "payment_method_id"],
         };
-
         onWillStart(async () => {
             let res = {};
-            if (this.props.id) {
                 res = await this.model.load_expense_form_data(options);
-            }
             this.state.data = res;
         });
         onWillUpdateProps((nextProps) => {
             if (nextProps.id) {
-                this.state.data = ifthis.model.load_expense_form_data(options);
+                this.state.data = this.model.load_expense_form_data(options);
             }
         });
 
@@ -77,16 +73,32 @@ class ExpenseForm extends Component {
         }, 500);
     }
 
-    _onClickSubmitForm(ev) {
+    async _onClickSubmitForm(ev) {
         ev.preventDefault();
         this.checkFormValid();
-        // this.trigger('expense-added', { ...this.state.newExpense });
-        // this.state.newExpense = {
-        //     name: '',
-        //     date: '',
-        //     amount: 0,
-        //     category: 'food'
-        // };
+        const newExpense = {
+            name: this.form.el.querySelector(".o_expense_description").value,
+            date: this.form.el.querySelector(".o_expense_date").value,
+            amount: this.form.el.querySelector(".o_expense_amount").value,
+            category_id: parseInt(this.form.el.querySelector("o_expense_category").value),
+        };
+        if (this.state.data.record) {
+            this._updateExpense(newExpense).then(() => {
+                this.env.bus.trigger('change_screen', { 'screen_name': 'ExpenseList' });
+            });
+        } else {
+            if (this.state.isValidForm) {
+                this._createExpense(newExpense).then(() => {
+                    this.env.bus.trigger('change_screen', { 'screen_name': 'ExpenseList' });
+                });
+            }
+        }
+    }
+    async _createExpense(expense){
+        return await this.model.orm.create("personal.expense", [expense]);
+    }
+    async _updateExpense(expense){
+        return await this.model.orm.write("personal.expense", [parseInt(this.props.id)], expense)
     }
 }
 

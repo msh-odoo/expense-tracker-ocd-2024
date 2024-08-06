@@ -6,13 +6,19 @@
                 <h2 class="text-white">
                     Personal Expenses
                 </h2>
-                <button type="button" class="btn btn-primary" t-on-click="_onCreateExpense">
-                    <span class="fs-3">Create Expense</span>
-                </button>
+                <div>
+                    <button type="button" class="btn btn-primary me-2" t-on-click="_onCreateExpense">
+                        <span class="fs-3">Create Expense</span>
+                    </button>
+                    <button t-if="state.selectedCheckboxes.length" type="button" class="btn btn-primary" t-on-click="deleteExpense">
+                        <span class="fs-3">Delete Expense</span>
+                    </button>
+                </div>
             </div>
             <table class="table table-dark table-hover">
                 <thead>
                     <tr class="table-success">
+                        <th></th>
                         <th>Description</th>
                         <th>Date</th>
                         <th>Amount</th>
@@ -21,11 +27,12 @@
                 </thead>
                 <tbody>
                     <t t-foreach="state.expenses" t-as="expense" t-key="expense.id">
-                        <tr t-att-data-id="expense.id" t-on-click="_onClickExpenseRow">
+                        <tr t-att-data-id="expense.id" t-on-click="_onClickExpenseRow" class="cursor-pointer">
+                            <td><t><input type="checkbox" class="form-check-input" t-if="!props.ignoreCreate" t-att-data-id="expense.id" t-on-click="_onCheckboxChange"/></t></td>
                             <td><t t-esc="expense.name"/></td>
                             <td><t t-esc="expense.date"/></td>
                             <td><t t-esc="expense.amount"/></td>
-                            <td><t t-esc="expense.category"/></td>
+                            <td><t t-esc="expense.category_id[1]"/></td>
                         </tr>
                     </t>
                 </tbody>
@@ -35,6 +42,7 @@
                         <td>
                             <b>Total Amount: <t t-esc="totalAmount"/></b>
                         </td>
+                        <td></td>
                         <td></td>
                     </tr>
                 </tfoot>

@@ -10,7 +10,8 @@ class ExpenseTracker(http.Controller):
         """
         return request.render('expense_tracker.root')
 
-    @http.route('/expense/get_expense_form_data/<string:model>/<int:id>', type='json', auth='user')
+    @http.route(['/expense/get_expense_form_data/<string:model>/<int:id>',
+    '/expense/get_expense_form_data/<string:model>/'], type='json', auth='user')
     def get_expense_form_data(self, model=None, id=False, **kw):
         data = {}
         if id:
@@ -19,11 +20,8 @@ class ExpenseTracker(http.Controller):
                 domain,
                 kw.get("fields") or ["id", "name"]
             )
-        else:
-            record = request.env["personal.expense"].default_get([])
-
-        data["record"] = record[0]
-        data["record_fields"] = request.env[model].sudo().fields_get()
+            data["record"] = record[0]
+            data["record_fields"] = request.env[model].sudo().fields_get()
 
         categories = request.env['expense.category'].sudo().search_read([], [])
         data["categories"] = categories
@@ -43,8 +41,6 @@ class ExpenseTracker(http.Controller):
         data["record"] = record[0]
         data["record_fields"] = request.env[model].sudo().fields_get()
 
-        # categories = request.env['expense.category'].sudo().search_read([], [])
-        # data["category_id"] = categories
         return data
 
     @http.route('/expense/get_related_model_data/<string:model>/', type='json', auth='user')
