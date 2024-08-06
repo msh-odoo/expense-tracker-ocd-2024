@@ -7,7 +7,17 @@
                 <button class="btn btn-primary" t-on-click="openExpenseView">Expenses</button>
                 <button class="btn btn-primary" t-on-click="openCategories">Categories</button>
             </t>
-            some content
+            <div class="d-flex flex-wrap">
+                <DashboardItem>
+                    some content
+                </DashboardItem>
+                <DashboardItem size="2">
+                    I love milk
+                </DashboardItem>
+                <DashboardItem>
+                    some content
+                </DashboardItem>
+            </div>
         </Layout>
     </t>
 
