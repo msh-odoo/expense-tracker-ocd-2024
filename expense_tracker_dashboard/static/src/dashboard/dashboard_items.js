@@ -2,7 +2,7 @@ import { registry } from "@web/core/registry";
 import { PersonalExpenseList } from "@expense_tracker/screens/expense_list/expense_list";
 import { ExpenseCategoriesList } from "@expense_tracker/screens/expense_categories_list/expense_categories_list";
 
-export const items = [
+const items = [
     {
         id: "recent_expenses",
         description: "Recent Expenses",
@@ -22,3 +22,7 @@ export const items = [
         }),
     },
 ]
+
+items.forEach(item => {
+    registry.category("awesome_dashboard").add(item.id, item);
+});
