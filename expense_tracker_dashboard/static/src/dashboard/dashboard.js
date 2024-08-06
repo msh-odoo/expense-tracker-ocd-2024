@@ -5,7 +5,6 @@ import { registry } from "@web/core/registry";
 import { Layout } from "@web/search/layout";
 import { useService } from "@web/core/utils/hooks";
 import { DashboardItem } from "./dashboard_item/dashboard_item";
-import { items } from "./dashboard_items";
 
 class ExpenseDashboard extends Component {
     static template = "expense_tracker_dashboard.ExpenseDashboard";
@@ -16,7 +15,7 @@ class ExpenseDashboard extends Component {
         this.display = {
             controlPanel: {},
         };
-        this.items = items;
+        this.items = registry.category("awesome_dashboard").getAll();
     }
 
     openExpenseView() {
