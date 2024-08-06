@@ -23,6 +23,10 @@
     ],
     'assets': {
         'web.assets_backend': [
+            'expense_tracker/static/src/model/*',
+            'expense_tracker/static/src/screens/expense_list/*',
+            'expense_tracker/static/src/screens/expense_categories/expense_categories.js',
+            'expense_tracker/static/src/screens/expense_categories/expense_categories.xml',
             'expense_tracker_dashboard/static/src/**/*',
             ('remove', 'expense_tracker_dashboard/static/src/dashboard/**/*'),
         ],
