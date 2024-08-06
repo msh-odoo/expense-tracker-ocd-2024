@@ -1,3 +1,5 @@
+/** @odoo-module **/
+
 import { Component } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { Layout } from "@web/search/layout";
@@ -32,4 +34,4 @@ class ExpenseDashboard extends Component {
     }
 }
 
-registry.category("actions").add("expense_tracker_dashboard.dashboard", ExpenseDashboard);
+registry.category("lazy_components").add("ExpenseDashboard", ExpenseDashboard);
