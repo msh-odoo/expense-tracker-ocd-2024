@@ -1,4 +1,5 @@
 import { Component, xml } from "@odoo/owl";
+import { registry } from "@web/core/registry";
 import { Header } from "./components/header/header";
 import { Container } from "./components/container/container";
 import { PersonalExpenseList } from "./screens/expense_list/expense_list";
@@ -11,6 +12,7 @@ export class ExpenseTracker extends Component {
         super.setup();
         this.mainScreen = { name: 'Expense List', component: PersonalExpenseList };
         this.mainScreenProps = {};
+        this.env.bus.addEventListener("change_screen", this.onChangeScreen.bind(this));
     }
 
     /**
@@ -21,6 +23,24 @@ export class ExpenseTracker extends Component {
             hasButtons: true,
             showFooter: false,
         }, this.mainScreenProps);
+    }
+
+    /**
+     * Called when main screen is changed
+     * @param {Event} ev 
+     */
+    onChangeScreen(ev) {
+        const screenRegistry = registry.category("screens");
+        const screen = screenRegistry.get(ev.detail.screen_name);
+        this.mainScreen.name = ev.detail.screen_name;
+        this.mainScreen.component = screen;
+        this.mainScreenProps = { ...ev.detail };
+        this.render(); // Explicitly re-rendering component without useState
+    }
+
+    _onLogoClicked(ev) {
+        this.mainScreen = { name: 'Expense List', component: PersonalExpenseList };
+        this.render(); // Explicitly re-rendering component without useState
     }
 
 }

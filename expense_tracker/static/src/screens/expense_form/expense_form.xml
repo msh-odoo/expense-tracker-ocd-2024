@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="w-100" t-ref="footer">
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" t-on-click="_onClickSubmitForm">
                         <span class="fs-3">Save</span>
                     </button>
                 </div>

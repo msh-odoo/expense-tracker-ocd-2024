@@ -8,6 +8,17 @@ export class PersonalExpenseList extends Component {
     get totalAmount() {
         return 2000.00;
     }
+
+    _onCreateExpense(ev) {
+        this.env.bus.trigger('change_screen', { 'screen_name': 'ExpenseForm', model: "personal.expense", isNew: true, });
+    }
+
+    _onDeleteExpense(ev) {
+        this._deleteRecord();
+    }
+    async _deleteRecord() {
+        // Delete Record Here
+    }
 }
 
 PersonalExpenseList.props = {

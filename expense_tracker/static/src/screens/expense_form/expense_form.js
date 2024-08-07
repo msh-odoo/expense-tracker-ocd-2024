@@ -6,6 +6,10 @@ class ExpenseForm extends Component {
     setup() {
         this.title = "Expense";
     }
+
+    async _onClickSubmitForm(ev) {
+        // Form submit logic here
+    }
 }
 
 registry.category("screens").add("ExpenseForm", ExpenseForm);
