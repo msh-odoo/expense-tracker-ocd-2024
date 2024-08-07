@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="expense_tracker.ExpenseForm">
+        <div class="expense-form">
+            <div class="o_expense_form_title">
+                <h1 class="text-white"><t t-out="this.title"/></h1>
+            </div>
+            <hr />
+            <div class="m-auto mt-4" style="width:70%">
+                <div class="mb-3 row d-flex align-items-center">
+                    <label class="fs-2 col-sm-3 col-form-label">Description :</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control text-white o_expense_description" required="true"/>
+                    </div>
+                </div>
+                <div class="mb-3 row d-flex align-items-center">
+                    <label class="fs-2 col-sm-3 col-form-label">Date :</label>
+                    <div class="col-sm-9">
+                        <input type="date" class="form-control text-white o_expense_date" required="true"/>
+                    </div>
+                </div>
+                <div class="mb-3 row d-flex align-items-center">
+                    <label class="fs-2 col-sm-3 col-form-label">Amount :</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control text-white o_expense_amount" required="true"/>
+                    </div>
+                </div>
+                <div class="mb-4 row form-group d-flex align-items-center">
+                    <label class="fs-2 col-sm-3 col-form-label">Category:</label>
+                    <div class="col-sm-9">
+                        <select class="form-select text-white o_expense_category">
+                            <option class="text-dark" value=""></option>
+                            <option class="text-dark" value="food">Food</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="w-100" t-ref="footer">
+                    <button type="button" class="btn btn-primary">
+                        <span class="fs-3">Save</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
