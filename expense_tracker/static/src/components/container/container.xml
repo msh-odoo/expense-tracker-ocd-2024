@@ -4,7 +4,7 @@
     <t t-name="expense_tracker.container">
         <div class="o_container py-5 m-5" style="padding: 0 5%">
             <main>
-                <PersonalExpenseList />
+                <PersonalExpenseList hasButtons="true" showFooter="false"/>
             </main>
         </div>
     </t>

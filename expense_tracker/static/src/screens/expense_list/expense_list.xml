@@ -6,11 +6,19 @@
                 <h2 class="text-white">
                     Expenses
                 </h2>
+                <div t-if="props.hasButtons">
+                    <button type="button" class="btn btn-primary me-2">
+                        <span class="fs-3">Create Expense</span>
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        <span class="fs-3">Delete Expense</span>
+                    </button>
+                </div>
             </div>
             <table class="table table-dark table-hover mb-0">
                 <thead>
                     <tr class="table-success">
-                        <th></th>
+                        <th t-if="props.hasButtons"></th>
                         <th>Description</th>
                         <th>Date</th>
                         <th>Amount</th>
@@ -19,7 +27,7 @@
                 </thead>
                 <tbody>
                     <tr class="cursor-pointer">
-                        <td>
+                        <td t-if="props.hasButtons">
                             <input type="checkbox" class="form-check-input"/>
                         </td>
                         <td><t t-out="'Lunch at Leela Hotel'"/></td>
@@ -28,7 +36,7 @@
                         <td><t t-out="'Food'"/></td>
                     </tr>
                 </tbody>
-                <tfoot>
+                <tfoot t-if="props.showFooter">
                     <tr class="table-dark">
                         <td colspan="3"></td>
                         <td>
