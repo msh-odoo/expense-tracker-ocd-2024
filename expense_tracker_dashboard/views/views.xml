@@ -1,0 +1,10 @@
+<odoo>
+  <data>
+    <record model="ir.actions.client" id="dashboard">
+      <field name="name">Dashboard</field>
+      <field name="tag">awesome_dashboard.dashboard</field>
+    </record>
+
+    <menuitem name="Dashboard" id="expense_tracker_dashboard.dashboard_menu" parent="expense_tracker.menu_personal_expense_root" action="expense_tracker_dashboard.dashboard" sequence="1"/>
+  </data>
+</odoo>
