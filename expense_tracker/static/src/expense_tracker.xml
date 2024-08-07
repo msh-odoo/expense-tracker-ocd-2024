@@ -3,7 +3,8 @@
 
     <t t-name="expense_tracker.root">
         <div class="d-flex expense_tracker_app">
-            <h1>Hello World!</h1>
+            <Header/>
+            <Container/>
         </div>
     </t>
 

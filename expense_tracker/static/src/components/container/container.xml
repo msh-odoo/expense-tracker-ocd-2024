@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="expense_tracker.container">
+        <div class="o_container py-5 m-5" style="padding: 0 5%">
+            <main>
+                <h1>Hello World</h1>
+            </main>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="expense_tracker.header">
+        <div class="o_header d-flex flex-column flex-shrink-0 p-3 text-white">
+            <div class="d-flex align-items-center justify-content-center">
+                <img class="cursor-pointer rounded-circle" src="/web/image/res.partner/3/avatar_128"/>
+            </div>
+            <hr />
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active text-white" data-screen="Dashboard" data-name="home">
+                        <i class="fa fa-home fa-lg" width="16" height="16" aria-hidden="true"></i>
+                        <span class="fs-4" style="margin:0 8px">Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white" data-screen="ExpenseList" data-name="expenses">
+                        <i class="fa fa-money fa-lg" width="16" height="16" aria-hidden="true"></i>
+                        <span class="fs-4" style="margin:0 8px">Expenses</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white" data-screen="CategoriesList" data-name="categories">
+                        <i class="fa fa-th-large fa-lg" width="16" height="16" aria-hidden="true"></i>
+                        <span class="fs-4" style="margin:0 8px">Categories</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white" data-screen="TagsList" data-name="tags">
+                        <i class="fa fa-tag fa-lg" width="16" height="16" aria-hidden="true"></i>
+                        <span class="fs-4" style="margin:0 8px">Tags</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </t>
+</templates>

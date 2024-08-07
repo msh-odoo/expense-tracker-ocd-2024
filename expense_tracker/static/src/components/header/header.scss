@@ -1,0 +1,14 @@
+.expense_tracker_app {
+    .o_header {
+        width: 280px;
+        .nav-item {
+            margin-bottom: 5px;
+        }
+        .nav-link {
+            border-radius: 5px !important;
+            &:hover {
+                background-color: #624159;
+            }
+        }
+    }
+}
