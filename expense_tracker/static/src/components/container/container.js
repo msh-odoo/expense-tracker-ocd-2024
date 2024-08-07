@@ -1,7 +1,15 @@
 import { Component } from "@odoo/owl";
-import { PersonalExpenseList } from "../../screens/expense_list/expense_list";
 
 export class Container extends Component {
     static template = "expense_tracker.container";
-    static components = { PersonalExpenseList };
 }
+
+Container.props = {
+    mainScreenProps: { type: Object, optional: true },
+    tname: { type: String },
+    component: { type: Function }
+};
+
+Container.defaultProps = {
+    mainScreenProps: {},
+};
