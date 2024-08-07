@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="expense_tracker.PersonalExpenseList">
+        <div class="rounded-6 shadow p-4 o_content_modal_rounded_shades height-container expense_list">
+            <div class="mb-4 d-flex justify-content-between">
+                <h2 class="text-white">
+                    Expenses
+                </h2>
+            </div>
+            <table class="table table-dark table-hover mb-0">
+                <thead>
+                    <tr class="table-success">
+                        <th></th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="cursor-pointer">
+                        <td>
+                            <input type="checkbox" class="form-check-input"/>
+                        </td>
+                        <td><t t-out="'Lunch at Leela Hotel'"/></td>
+                        <td><t t-out="'2024/08/21'"/></td>
+                        <td><t t-out="'2000.00'"/></td>
+                        <td><t t-out="'Food'"/></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="table-dark">
+                        <td colspan="3"></td>
+                        <td>
+                            <b>Total Amount: <t t-esc="totalAmount"/></b>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </t>
+</templates>
