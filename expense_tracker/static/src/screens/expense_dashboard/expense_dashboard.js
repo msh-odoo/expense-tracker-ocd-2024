@@ -23,6 +23,15 @@ export class Dashboard extends Component {
         return {};
     }
 
+    _onQuickCreateExpense() {
+        this.env.bus.trigger('change_screen', { 'screen_name': 'ExpenseForm', model: "personal.expense", isNew: true });
+        this.env.bus.trigger('change_active_menu', 'expenses' );
+    }
+
+    _onQuickCreateCategory() {
+        this.env.bus.trigger('change_screen', { 'screen_name': 'ExpenseCategoryForm', model: "expense.category", isNew: true });
+        this.env.bus.trigger('change_active_menu', 'categories' );
+    }
 }
 
 Dashboard.components = { PersonalExpenseList }
