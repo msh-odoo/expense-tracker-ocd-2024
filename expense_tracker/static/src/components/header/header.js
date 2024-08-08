@@ -1,7 +1,9 @@
 import { Component, useState } from "@odoo/owl";
+import { Timer } from "../timer/timer";
 
 export class Header extends Component {
     static template = "expense_tracker.header";
+    static components = { Timer };
 
     setup() {
         super.setup();

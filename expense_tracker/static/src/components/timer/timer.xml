@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="expense_tracker.timer">
+        <div class="o_time">
+            <span t-out="state.time.days"></span>:
+            <span t-out="state.time.hours"></span>:
+            <span t-out="state.time.minutes"></span>:
+            <span t-out="state.time.seconds"></span>
+        </div>
+    </t>
+</templates>

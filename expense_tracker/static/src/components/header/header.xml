@@ -33,6 +33,10 @@
                     </a>
                 </li>
             </ul>
+            <hr />
+            <div class="login_since">
+                <Timer/>
+            </div>
         </div>
     </t>
 </templates>
