@@ -1,27 +1,26 @@
 import { Component, useState, onWillStart } from '@odoo/owl';
-
 import { registry } from "@web/core/registry";
+import { useModel } from "../../model/model";
+import { ExpenseTrackerModel } from "../../model/expense_tracker_model";
 
 export class PersonalExpenseList extends Component {
     static template = 'expense_tracker.PersonalExpenseList';
 
     setup() {
+        this.model = useModel(ExpenseTrackerModel, this.modelParams);
         this.state = useState({ expenses: [] , selectedCheckboxes: []});
+        this.modelName = "personal.expense";
+        const options = {
+            model: this.modelName,
+        };
         onWillStart(async () => {
-            const res = await new Promise((resolve, reject) => {
-                setTimeout(() => { // Consider we are fetching data from server and server trip takes 500 miliseconds
-                    resolve([
-                        {id: 1, name: "Brunch at Hotel Leela", date: "2024-08-21", amount: 2000.00, category_id: [1, "Food"]},
-                        {id: 2, name: "Trip to Switzerland", date: "2024-08-22", amount: 222000.00, category_id: [2, "Travel"]},
-                    ]);
-                }, 500);
-            });
+            const res = await this.model.load_expenses(options);
             this.state.expenses = res;
         });
     }
 
     get totalAmount() {
-        return 2000.00;
+        return this.state.expenses.reduce((sum, expense) => sum + expense.amount, 0);
     }
 
     _onCreateExpense(ev) {

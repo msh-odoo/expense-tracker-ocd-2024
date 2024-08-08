@@ -1,5 +1,7 @@
-import { Component, useState } from "@odoo/owl";
+import { Component, useState, useSubEnv } from "@odoo/owl";
 import { registry } from "@web/core/registry";
+import { rpc } from "@web/core/network/rpc";
+import { ORM } from "@web/core/orm_service";
 import { Header } from "./components/header/header";
 import { Container } from "./components/container/container";
 import { PersonalExpenseList } from "./screens/expense_list/expense_list";
@@ -10,6 +12,10 @@ export class ExpenseTracker extends Component {
 
     setup() {
         super.setup();
+        const orm = new ORM();
+        // Use of useSubEnv to pass orm to this component as well as all it's children
+        useSubEnv({ orm, rpc });
+
         this.mainScreen = useState({ name: 'Expense List', component: PersonalExpenseList });
         this.mainScreenProps = {};
         this.env.bus.addEventListener("change_screen", this.onChangeScreen.bind(this));
