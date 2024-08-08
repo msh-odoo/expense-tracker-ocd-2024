@@ -1,8 +1,10 @@
 import { Component, useEffect, useState, onWillStart, onMounted, onPatched, useRef } from '@odoo/owl';
 import { registry } from "@web/core/registry";
+import { FormView } from '../../components/formview/formview';
 
 class ExpenseForm extends Component {
     static template = "expense_tracker.ExpenseForm";
+    static components = { FormView }
     setup() {
         this.title = "Expense";
         this.state = useState({ data: {}, isValidForm: true });

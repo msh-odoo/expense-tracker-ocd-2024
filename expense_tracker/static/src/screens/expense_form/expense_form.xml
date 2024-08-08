@@ -2,50 +2,56 @@
 <templates xml:space="preserve">
     <t t-name="expense_tracker.ExpenseForm">
         <div class="expense-form">
-            <div class="o_expense_form_title">
-                <h1 class="text-white"><t t-out="this.title"/></h1>
-            </div>
-            <hr />
-            <div t-attf-class="{{!state.isValidForm and 'o_invalid' or ''}} m-auto mt-4" t-ref="form" style="width:70%">
-                <div t-if="!state.isValidForm" class="alert alert-danger">
-                    Please enter right data!
+            <FormView>
+                <div class="o_expense_form_title">
+                    <h1 class="text-white"><t t-out="this.title"/></h1>
                 </div>
-                <div class="mb-3 row d-flex align-items-center">
-                    <label class="fs-2 col-sm-3 col-form-label">Description :</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control text-white o_expense_description" required="true" t-att-value="state.data.record and state.data.record.name"/>
+                <hr />
+                <t t-set-slot="content">
+                    <div t-attf-class="{{!state.isValidForm and 'o_invalid' or ''}} m-auto mt-4" t-ref="form" style="width:70%">
+                        <div t-if="!state.isValidForm" class="alert alert-danger">
+                            Please enter right data!
+                        </div>
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label class="fs-2 col-sm-3 col-form-label">Description :</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control text-white o_expense_description" required="true" t-att-value="state.data.record and state.data.record.name"/>
+                            </div>
+                        </div>
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label class="fs-2 col-sm-3 col-form-label">Date :</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control text-white o_expense_date" required="true" t-att-value="state.data.record and state.data.record.date"/>
+                            </div>
+                        </div>
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label class="fs-2 col-sm-3 col-form-label">Amount :</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control text-white o_expense_amount" required="true" t-att-value="state.data.record and state.data.record.amount"/>
+                            </div>
+                        </div>
+                        <div class="mb-4 row form-group d-flex align-items-center">
+                            <label class="fs-2 col-sm-3 col-form-label">Category:</label>
+                            <div class="col-sm-9">
+                                <select class="form-select text-white o_expense_category">
+                                    <t t-if="state.data and state.data.categories">
+                                        <t t-foreach="state.data.categories" t-as="category" t-key="category.id">
+                                            <option class="text-dark" t-att-value="category.id"><t t-out="category.name"/></option>
+                                        </t>
+                                    </t>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="mb-3 row d-flex align-items-center">
-                    <label class="fs-2 col-sm-3 col-form-label">Date :</label>
-                    <div class="col-sm-9">
-                        <input type="date" class="form-control text-white o_expense_date" required="true" t-att-value="state.data.record and state.data.record.date"/>
+                </t>
+                <t t-set-slot="footer">
+                    <div class="m-auto mt-4" t-ref="footer" style="width:70%">
+                        <button type="button" class="btn btn-primary" t-on-click="_onClickSubmitForm">
+                            <span class="fs-3">Save</span>
+                        </button>
                     </div>
-                </div>
-                <div class="mb-3 row d-flex align-items-center">
-                    <label class="fs-2 col-sm-3 col-form-label">Amount :</label>
-                    <div class="col-sm-9">
-                        <input type="number" class="form-control text-white o_expense_amount" required="true" t-att-value="state.data.record and state.data.record.amount"/>
-                    </div>
-                </div>
-                <div class="mb-4 row form-group d-flex align-items-center">
-                    <label class="fs-2 col-sm-3 col-form-label">Category:</label>
-                    <div class="col-sm-9">
-                        <select class="form-select text-white o_expense_category">
-                            <t t-if="state.data and state.data.categories">
-                                <t t-foreach="state.data.categories" t-as="category" t-key="category.id">
-                                    <option class="text-dark" t-att-value="category.id"><t t-out="category.name"/></option>
-                                </t>
-                            </t>
-                        </select>
-                    </div>
-                </div>
-                <div class="w-100" t-ref="footer">
-                    <button type="button" class="btn btn-primary" t-on-click="_onClickSubmitForm">
-                        <span class="fs-3">Save</span>
-                    </button>
-                </div>
-            </div>
+                </t>
+            </FormView>
         </div>
     </t>
 </templates>
