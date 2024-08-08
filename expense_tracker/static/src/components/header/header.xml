@@ -9,25 +9,25 @@
             <hr />
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link active text-white" t-on-click.prevent="onActivateMenu" data-screen="Dashboard" data-name="home">
+                    <a href="#" t-attf-class="nav-link text-white {{ state.activeMenuItem === 'home' ? 'active' : '' }}" t-on-click.prevent="onActivateMenu" data-screen="Dashboard" data-name="home">
                         <i class="fa fa-home fa-lg" width="16" height="16" aria-hidden="true"></i>
                         <span class="fs-4" style="margin:0 8px">Home</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white" t-on-click.prevent="onActivateMenu" data-screen="ExpenseList" data-name="expenses">
+                    <a href="#" t-attf-class="nav-link text-white {{ state.activeMenuItem === 'expenses' ? 'active' : '' }}" t-on-click.prevent="onActivateMenu" data-screen="ExpenseList" data-name="expenses">
                         <i class="fa fa-money fa-lg" width="16" height="16" aria-hidden="true"></i>
                         <span class="fs-4" style="margin:0 8px">Expenses</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white" t-on-click.prevent="onActivateMenu" data-screen="CategoriesList" data-name="categories">
+                    <a href="#" t-attf-class="nav-link text-white {{ state.activeMenuItem === 'categories' ? 'active' : '' }}" t-on-click.prevent="onActivateMenu" data-screen="CategoriesList" data-name="categories">
                         <i class="fa fa-th-large fa-lg" width="16" height="16" aria-hidden="true"></i>
                         <span class="fs-4" style="margin:0 8px">Categories</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white" t-on-click.prevent="onActivateMenu" data-screen="TagsList" data-name="tags">
+                    <a href="#" t-attf-class="nav-link text-white {{ state.activeMenuItem === 'tags' ? 'active' : '' }}" t-on-click.prevent="onActivateMenu" data-screen="TagsList" data-name="tags">
                         <i class="fa fa-tag fa-lg" width="16" height="16" aria-hidden="true"></i>
                         <span class="fs-4" style="margin:0 8px">Tags</span>
                     </a>

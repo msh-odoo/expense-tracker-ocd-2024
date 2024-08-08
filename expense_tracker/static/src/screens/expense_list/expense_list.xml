@@ -26,14 +26,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="cursor-pointer">
+                    <tr class="cursor-pointer" t-foreach="state.expenses" t-as="expense" t-key="expense.id">
                         <td t-if="props.hasButtons">
                             <input type="checkbox" class="form-check-input"/>
                         </td>
-                        <td><t t-out="'Lunch at Leela Hotel'"/></td>
-                        <td><t t-out="'2024/08/21'"/></td>
-                        <td><t t-out="'2000.00'"/></td>
-                        <td><t t-out="'Food'"/></td>
+                        <td><t t-out="expense.name"/></td>
+                        <td><t t-out="expense.date"/></td>
+                        <td><t t-out="expense.amount"/></td>
+                        <td><t t-out="expense.category_id[1]"/></td>
                     </tr>
                 </tbody>
                 <tfoot t-if="props.showFooter">
