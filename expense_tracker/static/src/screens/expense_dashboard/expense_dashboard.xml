@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="expense_tracker.Dashboard">
+        <div class="rounded-6 pt-4 shadow o_content_modal_rounded_shades height-container expense_list">
+            <div class="d-flex justify-content-between">
+                <h2 class="text-white o_view_title">
+                    Dashboard
+                    <hr />
+                </h2>
+            </div>
+            <div>
+                <PersonalExpenseList class="'expense-dashboard'" expenses="state.expenses" noTitle="true" hasButtons="false"/>
+            </div>
+            <div class="rounded-6 shadow p-4 o_content_modal_rounded_shades mt-5">
+                <div>
+                    <h2 class="text-white">Quick Access</h2>
+                    <hr />
+                    <div class="row">
+                        <div class="col-6">
+                            <button type="button" class="btn text-white" style="background-color:rgb(11,11,11); border-radius:1rem;" t-on-click="_onQuickCreateExpense">
+                                <i class="fa fa-calendar p-3 rounded-circle bg-success mt-2 mb-2 ms-2"></i>
+                                <span class="fs-3 ms-3 me-1">New Expense</span>
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" class="btn text-white" style="background-color:rgb(11,11,11); border-radius:1rem;" t-on-click="_onQuickCreateCategory">
+                                <i class="fa fa-file p-3 rounded-circle bg-info mt-2 mb-2 ms-2"></i>
+                                <span class="fs-3 ms-3 me-1">New Category</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

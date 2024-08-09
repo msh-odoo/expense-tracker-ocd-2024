@@ -4,7 +4,7 @@ import { rpc } from "@web/core/network/rpc";
 import { ORM } from "@web/core/orm_service";
 import { Header } from "./components/header/header";
 import { Container } from "./components/container/container";
-import { PersonalExpenseList } from "./screens/expense_list/expense_list";
+import { Dashboard } from "./screens/expense_dashboard/expense_dashboard";
 
 export class ExpenseTracker extends Component {
     static template = "expense_tracker.root";
@@ -16,7 +16,7 @@ export class ExpenseTracker extends Component {
         // Use of useSubEnv to pass orm to this component as well as all it's children
         useSubEnv({ orm, rpc });
 
-        this.mainScreen = useState({ name: 'Expense List', component: PersonalExpenseList });
+        this.mainScreen = useState({ name: 'Expense List', component: Dashboard });
         this.mainScreenProps = {};
         this.env.bus.addEventListener("change_screen", this.onChangeScreen.bind(this));
     }
@@ -44,8 +44,8 @@ export class ExpenseTracker extends Component {
     }
 
     _onLogoClicked(ev) {
-        this.mainScreen.name = 'Expense List';
-        this.mainScreen.component = PersonalExpenseList;
+        this.mainScreen.name = 'Dashboard';
+        this.mainScreen.component = Dashboard;
     }
 
 }
