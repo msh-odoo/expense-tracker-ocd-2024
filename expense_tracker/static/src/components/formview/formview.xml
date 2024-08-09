@@ -7,7 +7,13 @@
             </div>
             <t t-slot="content"/>
             <div class="o_form_footer">
-                <t t-slot="footer"/>
+                <t t-slot="footer">
+                    <div class="m-auto mt-4" t-ref="footer" style="width:70%">
+                        <button type="button" class="btn btn-primary" t-on-click="props.onSave">
+                            <span class="fs-3">Save</span>
+                        </button>
+                    </div>
+                </t>
             </div>
         </div>
     </t>

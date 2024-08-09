@@ -21,6 +21,27 @@ export class ExpenseTrackerModel extends Model {
     }
 
     /**
+     * @param {SearchParams} searchParams
+     */
+    async load_categories(searchParams) {
+        return await this.orm.searchRead("expense.category",
+            [],
+            ["name", "icon", "description"],
+            {},
+        );
+    }
+
+    /**
+     * @param {Object} params
+     */
+    async load_category_form_data(params) {
+        return await this.rpc(`/expense/get_form_data/${params.model}/${params.id || ""}`, {
+            isNew: params.isNew,
+            fields: params.fields,
+        });
+    }
+
+    /**
      * @override
      */
     hasData() {
