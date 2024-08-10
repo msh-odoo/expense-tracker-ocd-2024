@@ -8,15 +8,12 @@
                 <button class="btn btn-primary" t-on-click="openCategories">Categories</button>
             </t>
             <div class="d-flex flex-wrap">
-                <DashboardItem>
-                    some content
-                </DashboardItem>
-                <DashboardItem size="2">
-                    I love milk
-                </DashboardItem>
-                <DashboardItem>
-                    some content
-                </DashboardItem>
+                <t t-foreach="items" t-as="item" t-key="item.id">
+                    <DashboardItem size="item.size || 1">
+                        <t t-set="itemProp" t-value="item.props ? item.props(statistics) : {'data': statistics}"/>
+                        <t t-component="item.Component" t-props="itemProp" />
+                    </DashboardItem>
+                </t>
             </div>
         </Layout>
     </t>
