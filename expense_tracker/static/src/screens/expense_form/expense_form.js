@@ -80,7 +80,7 @@ class ExpenseForm extends Component {
             name: this.form.el.querySelector(".o_expense_description").value,
             date: this.form.el.querySelector(".o_expense_date").value,
             amount: this.form.el.querySelector(".o_expense_amount").value,
-            category_id: parseInt(this.form.el.querySelector("o_expense_category").value),
+            category_id: parseInt(this.form.el.querySelector(".o_expense_category").value),
         };
         if (this.state.data.record) {
             this._updateExpense(newExpense).then(() => {

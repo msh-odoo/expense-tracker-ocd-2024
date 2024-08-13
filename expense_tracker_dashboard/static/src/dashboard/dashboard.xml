@@ -25,7 +25,7 @@
 
     <t t-name="awesome_dashboard.ConfigurationDialog">
         <Dialog title="'Dashboard items configuration'">
-            Which cards do you whish to see ?
+            Which cards do you wish to see ?
             <t t-foreach="items" t-as="item" t-key="item.id">
                 <CheckBox value="item.enabled" onChange="(ev) => this.onChange(ev, item)">
                     <t t-esc="item.description"/>
