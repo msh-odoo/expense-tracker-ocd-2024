@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+    <record id="contacts_gallery_view_zoom" model="ir.ui.view">
+      <field name="name">awesome_gallery.orders.gallery.zoom</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="awesome_gallery.contacts_gallery_view"/>
+        <field name="arch" type="xml">
+          <xpath expr="//gallery" position="attributes">
+            <attribute name="preview_image">True</attribute>
+          </xpath>
+        </field>
+    </record>
+
+    </data>
+</odoo>

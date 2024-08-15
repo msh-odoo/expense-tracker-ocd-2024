@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="awesome_gallery.GalleryImage" t-inherit="awesome_gallery.GalleryImage" t-inherit-mode="extension">
+        <xpath expr="//div/img" position="attributes">
+            <attribute name="t-att-data-tooltip-template">hasTooltip and tooltipAttributes.template</attribute>
+            <attribute name="t-att-data-tooltip-info">hasTooltip and tooltipAttributes.info</attribute>
+            <attribute name="t-att-data-tooltip-delay">hasTooltip and props.zoomDelay</attribute>
+        </xpath>
+    </t>
+
+    <t t-name="awesome_gallery_zoom.ImageZoomTooltip">
+        <div class="o_image_zoom">
+            <img t-att-src="url" width="400" height="400"/>
+        </div>
+    </t>
+</templates>

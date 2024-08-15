@@ -11,7 +11,10 @@ export class GalleryModel {
         this.limit = limit;
         this.keepLast = new KeepLast();
         this.pager = { offset: 0, limit: limit };
+        this.setup(orm, resModel, fields, archInfo);
     }
+
+    setup() {}
 
     async load(domain) {
         const specification = {
