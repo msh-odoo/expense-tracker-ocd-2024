@@ -11,6 +11,9 @@
                         <field name="name"/>
                         <field name="description"/>
                     </group>
+                    <div class="d-flex gap-1 action_buttons" colspan="6">
+                        <widget name="icon_selector"/>
+                    </div>
                 </sheet>
             </form>
         </field>

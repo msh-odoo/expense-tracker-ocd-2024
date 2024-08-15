@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="icon_food" model="expense.icon">
+            <field name="name">fa-cutlery</field>
+        </record>
+        <record id="icon_entertaintment" model="expense.icon">
+            <field name="name">fa-file-video-o</field>
+        </record>
+        <record id="icon_daily_needs" model="expense.icon">
+            <field name="name">fa-male</field>
+        </record>
+        <record id="icon_grooming" model="expense.icon">
+            <field name="name">fa-male</field>
+        </record>
+        <record id="icon_tour" model="expense.icon">
+            <field name="name">fa-fighter-jet</field>
+        </record>
+    </data>
+</odoo>

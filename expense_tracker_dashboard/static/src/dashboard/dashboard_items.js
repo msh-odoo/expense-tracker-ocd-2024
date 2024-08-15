@@ -9,7 +9,7 @@ const items = [
         Component: PersonalExpenseList,
         size: 3,
         props: (data) => ({
-            title: "Recent Expenses",
+            
         }),
     },
     {
@@ -18,7 +18,7 @@ const items = [
         Component: ExpenseCategoriesList,
         size: 3,
         props: (data) => ({
-            title: "Top Categories",
+            
         }),
     },
 ]

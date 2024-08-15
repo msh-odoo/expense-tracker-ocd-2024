@@ -39,7 +39,7 @@ class ExpenseCategoryForm extends Component {
         const options = {
             model: this.modelName,
             id: id,
-            fields: ["name", "icon", "description"],
+            fields: ["name", "icon_id", "description"],
         };
         const res = await this.model.load_category_form_data(options);
         debugger;
@@ -54,13 +54,13 @@ class ExpenseCategoryForm extends Component {
         if(this.state.data.record.id) {
             await this.model.orm.write("expense.category", [this.state.data.record.id], {
                 name: this.state.data.record.name,
-                icon: this.state.data.record.icon,
+                icon_id: this.state.data.record.icon,
                 description: this.state.data.record.description
             })
         } else {
             await this.model.orm.create("expense.category", [{
                 name: this.state.data.record.name,
-                icon: this.state.data.record.icon,
+                icon_id: this.state.data.record.icon,
                 description: this.state.data.record.description
             }])
         }

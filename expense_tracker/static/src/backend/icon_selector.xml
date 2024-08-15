@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="expense_tracker.ImageSelector">
+        <div class="o_icons d-flex bd-highlight mb-3 mt-2">
+            <div class="o_label"><strong>Icons</strong></div>
+            <div class="d-flex flex-wrap align-items-center mw-100 gap-2" aria-atomic="true">
+                <t t-foreach="icons" t-as="icon" t-key="icon.id">
+                    <button
+                        role="menuitem"
+                        t-att-data-id="icon.id"
+                        t-att-data-value="icon.name"
+                        title="Icon"
+                        aria-label="Icon"
+                        t-attf-class="btn p-0 rounded-2 border {{icon.id === state.icon_id ? 'active' : ''}}"
+                        t-on-click="onChangeIcon">
+                        <i t-attf-class="fa {{icon.name}} fa-5x p-2"/>
+                    </button>
+                </t>
+            </div>
+        </div>
+    </t>
+
+</templates>

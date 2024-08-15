@@ -26,7 +26,7 @@ export class ExpenseTrackerModel extends Model {
     async load_categories(searchParams) {
         return await this.orm.searchRead("expense.category",
             [],
-            ["name", "icon", "description"],
+            ["name", "icon_id", "description"],
             {},
         );
     }

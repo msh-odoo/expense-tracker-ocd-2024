@@ -12,10 +12,14 @@
         'views/expense_tracker_templates.xml',
     ],
     'demo': [
+        'data/expense_icon_demo.xml',
         'data/expense_category_demo.xml',
         'data/expense_demo.xml',
     ],
     'assets': {
+        'web.assets_backend': [
+            'expense_tracker/static/src/backend/**/*',
+        ],
         'expense_tracker.assets_expense': [
             ('include', 'web.assets_backend'),
             'expense_tracker/static/src/**/*',
