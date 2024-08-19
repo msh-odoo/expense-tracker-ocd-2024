@@ -21,6 +21,12 @@
         'web.assets_backend': [
             'awesome_gallery/static/src/**/*',
         ],
+        # 'web.tests_assets': [
+        #     'awesome_gallery/static/tests/*.js',
+        # ],
+        'web.assets_unit_tests': [
+            'awesome_gallery/static/tests/*.js',
+        ],
     },
     'license': 'AGPL-3'
 }
